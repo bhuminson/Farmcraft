@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=Farm
+comment1.params=name
+comment1.target=Farm(java.lang.String)
+comment2.params=e
+comment2.target=void\ actionPerformed(java.awt.event.ActionEvent)
+comment3.params=
+comment3.target=void\ makePlots()
+comment4.params=
+comment4.target=void\ nextDay()
+numComments=5

@@ -1,0 +1,18 @@
+#BlueJ class context
+comment0.target=Seed
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Seed\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=java.lang.String\ getName()
+comment2.params=name
+comment2.target=void\ setName(java.lang.String)
+comment3.params=
+comment3.target=int\ daysToGrow()
+comment4.params=days
+comment4.target=void\ setDays(int)
+comment5.params=
+comment5.target=int\ getWorth()
+comment6.params=price
+comment6.target=void\ setWorth(int)
+comment7.params=
+comment7.target=void\ fertilize()
+numComments=8
