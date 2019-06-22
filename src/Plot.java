@@ -1,4 +1,4 @@
-public class Plot	{
+public class Plot implements Paintable	{
 
 	public boolean planted;
 	public Plant plant; 
@@ -17,19 +17,8 @@ public class Plot	{
 		this.plant = null;
 	}
 
-	public void paint()	{
-		if(!planted) {
-			System.out.println("---------");
-			System.out.println("---------");
-			System.out.println("---------");
-			System.out.println("---------");
-			System.out.println("---------\n");
-			return;
-		}
-		System.out.println("*********");
-		System.out.println("*********");
-		System.out.println("*********");
-		System.out.println("*********");
-		System.out.println("*********\n");
+	@Override
+	public void accept(Visitor visitor)	{
+		visitor.visit(this);
 	}
 }
