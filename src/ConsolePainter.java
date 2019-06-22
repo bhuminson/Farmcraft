@@ -1,5 +1,8 @@
 public class ConsolePainter implements Visitor	{
 
+	private static final int PLOT_WIDTH = 9;
+	private static final int PLOT_HEIGHT = 5;
+
 	@Override
 	public void visit(Farm farm)	{
 		System.out.println("______________________________________________________");
@@ -14,17 +17,25 @@ public class ConsolePainter implements Visitor	{
 	@Override
 	public void visit(Plot plot)	{
 		if(!plot.planted) {
-			System.out.println("---------");
-			System.out.println("---------");
-			System.out.println("---------");
-			System.out.println("---------");
-			System.out.println("---------\n");
-			return;
+			for(int i = 0; i < PLOT_HEIGHT; i++)	{
+				for(int j = 0; j < PLOT_WIDTH; j++)	{
+					System.out.print("-");
+				}
+				System.out.println("");
+			}
+		} else {
+			for(int i = 0; i < PLOT_HEIGHT; i++)	{
+				for(int j = 0; j < PLOT_WIDTH; j++)	{
+					plot.getPlant().accept(this);
+				}
+				System.out.println("");
+			}
 		}
-		System.out.println("*********");
-		System.out.println("*********");
-		System.out.println("*********");
-		System.out.println("*********");
-		System.out.println("*********\n");
+		System.out.println("");
+	}
+
+	@Override
+	public void visit(Potato potato)	{
+		System.out.print("P");
 	}
 }

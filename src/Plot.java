@@ -1,15 +1,19 @@
 public class Plot implements Paintable	{
 
 	public boolean planted;
-	public Plant plant; 
+	private Plant plant; 
 
 	public Plot()	{
 		planted = false;
 	}
 
-	public void plant(Plant plant)	{
+	public void setPlant(Plant plant)	{
 		planted = true;
 		this.plant = plant;
+	}
+
+	public Plant getPlant()	{
+		return plant;
 	}
 
 	public void harvest()	{

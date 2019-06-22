@@ -1,3 +1,4 @@
 public interface Plant	{
-	int getPrice(); 
+	int getPrice();
+    void accept(Visitor visitor); 
 }

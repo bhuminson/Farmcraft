@@ -9,16 +9,28 @@ public class Main {
 		System.out.println("\n");
 	}
 
-	public static void main(String[] args)	{
+    public static void clearScreen() {  
+        try     { 
+            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+        }
+        catch(Exception e) {
+            ;
+        }
+   }
+
+	public static void main(String[] args) {
+        clearScreen();
 		System.out.println("Farmer Inc., Copyright 2019, Bhumin Son. All rights reserved.\n");
 		System.out.println("Welcome to Farmer Inc.!\n");
 		printControls();
+
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Name your farm:");
-		String name = scan.nextLine();
-		Farm farm = new Farm(name);
-		Visitor consolePainter = new ConsolePainter();
+        String name = scan.nextLine();
+        Farm farm = new Farm(name);
+        clearScreen();
 
+        Visitor consolePainter = new ConsolePainter();
 		farm.accept(consolePainter);
 
 		while(true)	{
@@ -39,7 +51,7 @@ public class Main {
 			else 	{
 				printControls();
 			}
-
+            clearScreen();
 			farm.accept(consolePainter);
 		}
 	}
