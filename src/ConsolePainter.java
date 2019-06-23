@@ -16,6 +16,7 @@ public class ConsolePainter implements Visitor	{
 
 	@Override
 	public void visit(Plot plot)	{
+		String token;
 		if(!plot.planted) {
 			for(int i = 0; i < PLOT_HEIGHT; i++)	{
 				for(int j = 0; j < PLOT_WIDTH; j++)	{

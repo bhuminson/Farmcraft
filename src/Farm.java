@@ -17,7 +17,6 @@ public class Farm implements Paintable	{
 
 	public boolean removePlot()	{
 		if(plots.size() == 0)	{
-			System.out.println("You don't have any plots!");
 			return false;
 		}
 		plots.remove(plots.size() - 1);
