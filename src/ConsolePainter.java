@@ -7,6 +7,8 @@ public class ConsolePainter implements Visitor	{
 	public void visit(Farm farm)	{
 		System.out.println("______________________________________________________");
 		System.out.println(farm.name);
+		System.out.println("$" + farm.cash);
+		System.out.println("Day " + farm.day);
 		System.out.println("");
 		for(Plot plot: farm.plots)	{
 			plot.accept(this);

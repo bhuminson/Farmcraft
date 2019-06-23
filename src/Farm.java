@@ -4,15 +4,27 @@ import java.util.ArrayList;
 public class Farm implements Paintable	{
 	public String name;
 	public List<Plot> plots;
-	//TODO: Add valuation aspect
+	public int cash;
+	public int day;
 
 	public Farm(String name)	{
 		this.name = name;
 		plots = new ArrayList<Plot>();
+		day = 0;
+		cash = 300;
 	}
 
-	public void addPlot()	{
+	public boolean addPlot()	{
+		if(cash < 100)	{
+			return false;
+		}
 		plots.add(new Plot());
+		cash -= 100;
+		return true;
+	}
+
+	public void advance()	{
+		day++;
 	}
 
 	public boolean removePlot()	{
