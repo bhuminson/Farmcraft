@@ -41,4 +41,4 @@ public class ConsolePainter implements Visitor	{
 	public void visit(Potato potato)	{
 		System.out.print("P");
 	}
-}
+} 

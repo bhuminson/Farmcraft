@@ -7,6 +7,7 @@ public class TextMode implements GUIMode    {
     boolean quit = false;
     Farm farm;
 
+    @Override
     public void showTutorial()  {
         System.out.println("Controls:");
         System.out.println("\tPress 'a' to add a plot ($100)");
@@ -18,10 +19,12 @@ public class TextMode implements GUIMode    {
         System.out.println("\n");
     }
 
+    @Override
     public void showFarm()  {
         farm.accept(consolePainter);
     }
 
+    @Override
     public void gameLoop()  {
         while(!quit)    {
             String input = scan.nextLine();
@@ -85,7 +88,6 @@ public class TextMode implements GUIMode    {
             System.out.println(result);
         }
     }
-
 
     @Override
     public void nextScreen() {  
