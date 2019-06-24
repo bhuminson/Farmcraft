@@ -8,27 +8,51 @@ public class TextMode implements GUIMode    {
     Farm farm;
 
     @Override
-    public void showTutorial()  {
+    public void invTutorial()       {
+        System.out.println("\nPress 'i' to go back to the farm\n");
+    }
+
+    @Override
+    public void farmTutorial()  {
         System.out.println("Controls:");
         System.out.println("\tPress 'a' to add a plot ($100)");
         System.out.println("\tPress 'r' to remove a plot");
         System.out.println("\tPress 'p' to plant a potato");
+        System.out.println("\tPress 'i' to open your inventory");
         System.out.println("\tPress 's' to sleep");
         System.out.println("\tPress 'q' to quit");
-        System.out.println("\tPress any other key for help");
         System.out.println("\n");
     }
 
     @Override
     public void showFarm()  {
+        nextScreen();
+        farmTutorial();
         farm.accept(consolePainter);
     }
 
     @Override
+    public void showInventory()     {
+        nextScreen();
+        invTutorial();
+        farm.inv.accept(consolePainter);
+    }
+
+    public void invLoop()    {
+        while(true)    {
+            if(scan.nextLine().equals("i"))    {
+                break;
+            }
+            showInventory();
+        }
+    }
+
+    @Override
     public void gameLoop()  {
+
         while(!quit)    {
+            scan.reset();
             String input = scan.nextLine();
-            boolean help = false;
             String result = null;
 
             switch(input)   {
@@ -72,19 +96,18 @@ public class TextMode implements GUIMode    {
                     result = "You slept well.";
                     break;
 
+                case "i":
+                    showInventory();
+                    invLoop();
+                    result = "Welcome back!";
+                    break;
+
                 default:
-                    help = true;
+                    result = "Unrecognized command.";
                     break;
             }
 
-            nextScreen();
             showFarm();
-
-            if(help)    {
-                showTutorial();
-                continue;
-            }
-
             System.out.println(result);
         }
     }
@@ -108,6 +131,7 @@ public class TextMode implements GUIMode    {
         String name = scan.nextLine();
         farm = new Farm(name);
         nextScreen();
+        farmTutorial();
         showFarm();
     }
 }
