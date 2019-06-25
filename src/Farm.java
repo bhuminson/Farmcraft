@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class Farm implements Paintable	{
 	public String name;
 	public List<Plot> plots;
-	public int cash;
+	public Money cash;
 	public Day dayCount;
     public Inventory inv;
     public Market mkt;
@@ -13,13 +13,13 @@ public class Farm implements Paintable	{
 		this.name = name;
 		plots = new ArrayList<Plot>();
 		dayCount = new Day();
-		cash = 300;
+		cash = new Money(300);
 		inv = new Inventory();
-		mkt = new Market();
+		mkt = new Market(cash, inv);
 	}
 
 	public boolean canAfford(Purchasable item)	{
-		return cash >= item.getPrice();
+		return cash.getCash() >= item.getPrice();
 	}
 
 	public void advance()	{
@@ -32,7 +32,7 @@ public class Farm implements Paintable	{
 			return false;
 		}
 		plots.add(newPlot);
-		cash -= 100;
+		cash.withdraw(100);
 		return true;
 	}
 
@@ -44,27 +44,19 @@ public class Farm implements Paintable	{
 		return true;
 	}
 
-	public boolean buySeed(Plant seed)    {
-        if(!canAfford(seed))   {
-            return false;
-        }
-        inv.addSeed(seed);
-        return true;
-	}
-
-	public boolean plant(Plant seed)	{
-		if(plots.isEmpty())	{
-			return false;
+	public int plant(Plant seed)	{
+		if(inv.checkStock(seed) == false)	{
+			return 1; // no seeds
 		}
 		for(int i = 0; i < plots.size(); i++)  {
             Plot curPlot = plots.get(i);
             if(curPlot.planted == false)  {
-                curPlot.setPlant(new Potato());
-                return true;
+                curPlot.setPlant(seed);
+                inv.removeSeed(seed);
+                return 0; //success
             }
-            if(i == farm.plots.size() - 1)  {
-            	return false;
-            }
+        }
+        return 2; // no land
 	}
 
 	@Override

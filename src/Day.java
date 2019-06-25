@@ -12,4 +12,8 @@ public class Day {
     public void nextDay() {
         day++;
     }
+
+    public String toString()    {
+        return "Day: " + day;
+    }
 }

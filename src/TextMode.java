@@ -65,23 +65,25 @@ public class TextMode implements GUIMode    {
     public void mktLoop()   {
         boolean exit = false;
         while(!exit)    {
-            String input = scan.nextLine();
-            String result;
+            String input = scan.nextLine().toLowerCase();
+            String result = null;
             switch(input)   {
                 case "m":
                     exit = true;
                     break;
                 case "p":
-                    if(farm.canAfford(new Potato()))    {
-                       farm.inv.addSeed(new Potato());  
-                       result = "Thank you for your purchase.";
-                       break;
+                    if(farm.mkt.buySeed(new Potato()))   {
+                        result = "Thank you for your purchase.";
+                        break;
+                    } else {
+                        result = "Insufficient funds.";
+                        break;
                     }
-                    result = "You need more money!";
-                    break;
+                default:
+                    result = "Unrecognized command.";
             }
-
             showMarket();
+            System.out.println(result);
         }
     }
 
@@ -90,8 +92,8 @@ public class TextMode implements GUIMode    {
 
         while(!quit)    {
             scan.reset();
-            String input = scan.nextLine();
-            String result = null;
+            String input = scan.nextLine().toLowerCase();
+            String result;
 
             switch(input)   {
                 case "q":
@@ -116,16 +118,13 @@ public class TextMode implements GUIMode    {
                     break;
 
                 case "p":
-                    for(int i = 0; i < farm.plots.size(); i++)  {
-                        Plot curPlot = farm.plots.get(i);
-                        if(curPlot.planted == false)  {
-                            curPlot.setPlant(new Potato());
-                            result = "Potato planted on plot " + (i + 1);
-                            break;
-                        }
-                        if(i == farm.plots.size() - 1)  {
-                            result = "You need more land!";
-                        }
+                    int val = farm.plant(new Potato());
+                    if(val == 0)    {
+                        result = "Potato planted.";
+                    } else if(val == 1) {
+                        result = "You need more potato seeds!";
+                    } else {
+                        result = "You need more land!";
                     }
                     break;
 

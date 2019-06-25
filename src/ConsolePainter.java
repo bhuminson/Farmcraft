@@ -7,8 +7,8 @@ public class ConsolePainter implements Visitor  {
     public void visit(Farm farm)    {
         System.out.println("______________________________________________________");
         System.out.println(farm.name);
-        System.out.println("$" + farm.cash);
-        System.out.println("Day " + farm.dayCount.getDay());
+        System.out.println(farm.cash);
+        System.out.println(farm.dayCount);
         System.out.println("");
         for(Plot plot: farm.plots)  {
             plot.accept(this);
@@ -46,7 +46,7 @@ public class ConsolePainter implements Visitor  {
     public void visit(Inventory inv)        {
         System.out.println("**************** INVENTORY ****************");
         System.out.println("\nSEEDS:");
-        System.out.println("\tPotato seeds: ");
+        System.out.println("\tPotato seeds: " + inv.seeds.get(new Potato()));
 
         System.out.println("*******************************************");
     }
@@ -54,8 +54,15 @@ public class ConsolePainter implements Visitor  {
     @Override
     public void visit(Market mkt)  {
         System.out.println("+++++++++++++++ MARKET +++++++++++++++");
-        System.out.println("\nSEEDS FOR SALE:");
-        System.out.println("\tPotato seeds: ");
-        System.out.println("++++++++++++++++++++++++++++++++++++++");
+        System.out.println("\nCash: " + mkt.userCash);
+        System.out.println("\n             +++ BUY +++\n");
+        System.out.println("           Potato seeds: ");
+        System.out.println("              Price: ");
+        System.out.println("              Your stock: ");
+        System.out.println("\n             +++ SELL +++\n");
+        System.out.println("           Potato: ");
+        System.out.println("              Price: ");
+        System.out.println("              Your stock: ");
+        System.out.println("\n++++++++++++++++++++++++++++++++++++++");
     }
 } 

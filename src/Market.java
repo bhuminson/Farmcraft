@@ -1,9 +1,23 @@
-import java.util.Map;
-import java.util.HashMap;
-
 public class Market implements Paintable    {
-    public Map<Plant, Integer> seeds;
-    public Map<Plant, Integer> crops;
+    public Money userCash;
+    public Inventory userInv;
+    public Inventory mktInv;
+
+    public Market(Money cash, Inventory userInv) {
+        this.userCash = cash;
+        this.userInv = userInv;
+        mktInv = new Inventory();
+    }
+
+    public boolean buySeed(Purchasable item)    {
+        assert item instanceof Plant;
+
+        if(userCash.withdraw(item.getPrice()))  {
+            userInv.addSeed((Plant)item);
+            return true;
+        }
+        return false;
+    }
 
     public void accept(Visitor visitor) {
         visitor.visit(this);

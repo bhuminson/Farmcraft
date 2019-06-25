@@ -23,11 +23,15 @@ public final class Potato implements Plant	{
 
     @Override
     public boolean equals(Object other)     {
-        return other instanceof Potato;
+        if(!(other instanceof Potato))  {
+            return false;
+        }
+        Potato temp = (Potato)other;
+        return temp.isSeed == this.isSeed;
     }
 
     @Override
     public int hashCode()       {
-        return 0;
+        return Objects.hash(id, isSeed);
     }
 }
