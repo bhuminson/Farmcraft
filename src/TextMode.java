@@ -19,9 +19,17 @@ public class TextMode implements GUIMode    {
         System.out.println("\tPress 'r' to remove a plot");
         System.out.println("\tPress 'p' to plant a potato");
         System.out.println("\tPress 'i' to open your inventory");
+        System.out.println("\tPress 'm' to go to the market");
         System.out.println("\tPress 's' to sleep");
         System.out.println("\tPress 'q' to quit");
         System.out.println("\n");
+    }
+
+    @Override
+    public void mktTutorial()   {
+        System.out.println("\nWelcome to Farm Depot!\n");
+        System.out.println("Press 'p' to buy potato seeds");
+        System.out.println("Press 'm' to go back to the farm\n");
     }
 
     @Override
@@ -44,6 +52,36 @@ public class TextMode implements GUIMode    {
                 break;
             }
             showInventory();
+        }
+    }
+
+    @Override
+    public void showMarket()   {
+        nextScreen();
+        mktTutorial();
+        farm.mkt.accept(consolePainter);
+    }
+
+    public void mktLoop()   {
+        boolean exit = false;
+        while(!exit)    {
+            String input = scan.nextLine();
+            String result;
+            switch(input)   {
+                case "m":
+                    exit = true;
+                    break;
+                case "p":
+                    if(farm.canAfford(new Potato()))    {
+                       farm.inv.addSeed(new Potato());  
+                       result = "Thank you for your purchase.";
+                       break;
+                    }
+                    result = "You need more money!";
+                    break;
+            }
+
+            showMarket();
         }
     }
 
@@ -99,6 +137,12 @@ public class TextMode implements GUIMode    {
                 case "i":
                     showInventory();
                     invLoop();
+                    result = "Welcome back!";
+                    break;
+
+                case "m":
+                    showMarket();
+                    mktLoop();
                     result = "Welcome back!";
                     break;
 

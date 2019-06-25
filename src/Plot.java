@@ -1,10 +1,14 @@
-public class Plot implements Paintable	{
-
+public class Plot implements Paintable, Purchasable{
+	public int price = 100;
 	public boolean planted;
 	private Plant plant; 
 
 	public Plot()	{
 		planted = false;
+	}
+
+	public int getPrice()	{
+		return price;
 	}
 
 	public void setPlant(Plant plant)	{

@@ -8,7 +8,7 @@ public class ConsolePainter implements Visitor  {
         System.out.println("______________________________________________________");
         System.out.println(farm.name);
         System.out.println("$" + farm.cash);
-        System.out.println("Day " + farm.day);
+        System.out.println("Day " + farm.dayCount.getDay());
         System.out.println("");
         for(Plot plot: farm.plots)  {
             plot.accept(this);
@@ -44,10 +44,18 @@ public class ConsolePainter implements Visitor  {
 
     @Override
     public void visit(Inventory inv)        {
-        System.out.println("*********** INVENTORY ***********");
+        System.out.println("**************** INVENTORY ****************");
         System.out.println("\nSEEDS:");
         System.out.println("\tPotato seeds: ");
 
-        System.out.println("*********************************");
+        System.out.println("*******************************************");
+    }
+
+    @Override
+    public void visit(Market mkt)  {
+        System.out.println("+++++++++++++++ MARKET +++++++++++++++");
+        System.out.println("\nSEEDS FOR SALE:");
+        System.out.println("\tPotato seeds: ");
+        System.out.println("++++++++++++++++++++++++++++++++++++++");
     }
 } 

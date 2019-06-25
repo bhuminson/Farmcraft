@@ -3,4 +3,5 @@ public interface Visitor	{
 	void visit(Plot plot);
     void visit(Potato potato);
     void visit(Inventory inv);
+    void visit(Market mkt);
 }

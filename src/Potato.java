@@ -1,7 +1,7 @@
 import java.util.Objects;
 
 public final class Potato implements Plant	{
-	private final int price = 5;
+	private int price = 5;
     private final int growTime = 10;
     private final String id = "Potato";
     public boolean isSeed = true;
@@ -28,6 +28,6 @@ public final class Potato implements Plant	{
 
     @Override
     public int hashCode()       {
-        return 2;
+        return 0;
     }
 }

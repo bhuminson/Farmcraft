@@ -1,7 +1,5 @@
-public interface Plant	{
+public interface Plant extends Purchasable {
     boolean isSeed();
 	int getPrice();
     void accept(Visitor visitor);
-    boolean equals(Object other);
-    int hashCode(); 
 }
