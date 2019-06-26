@@ -8,7 +8,7 @@ public class Inventory implements Paintable     {
     public Inventory()      {
         seeds = new HashMap<Plant, Integer>();
         crops = new HashMap<Plant, Integer>();
-        
+
         seeds.put(new Potato(), 0);
     }
 
@@ -20,18 +20,8 @@ public class Inventory implements Paintable     {
     }
 
     public void removeSeed(Plant seed)        {
-        assert seeds.containsKey(seed);
-
-        if(seeds.containsKey(seed)) {
-            int count = seeds.get(seed);
-            if(count == 1)  {
-                seeds.remove(seed);
-                return;
-            }
-            seeds.put(seed, count - 1);
-        } else {
-            seeds.remove(seed);
-        }
+        int count = seeds.get(seed);
+        seeds.put(seed, count - 1);
     }
 
     public void addCrop(Plant crop) {
@@ -61,11 +51,14 @@ public class Inventory implements Paintable     {
     }
 
     public boolean checkStock(Plant plantable)  {
+        boolean stocked;
         if (plantable.isSeed()) {
-            return seeds.containsKey(plantable);
+            stocked = (seeds.get(plantable) == 0) ? false: true;
+            
         } else {
-            return crops.containsKey(plantable);
+            stocked = (crops.get(plantable) == 0) ? false: true;
         }
+        return stocked;
     }
 
     @Override
