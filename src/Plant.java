@@ -1,5 +1,6 @@
 public interface Plant extends Purchasable {
     boolean isSeed();
-	int getPrice();
+    int getBuyPrice();
+    int getSellPrice();
     void accept(Visitor visitor);
 }

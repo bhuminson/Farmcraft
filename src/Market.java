@@ -12,7 +12,7 @@ public class Market implements Paintable    {
     public boolean buySeed(Purchasable item)    {
         assert item instanceof Plant;
 
-        if(userCash.withdraw(item.getPrice()))  {
+        if(userCash.withdraw(item.getBuyPrice()))  {
             userInv.addSeed((Plant)item);
             return true;
         }

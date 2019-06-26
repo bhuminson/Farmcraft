@@ -1,8 +1,9 @@
 import java.util.Objects;
 
 public final class Potato implements Plant	{
-	private int price = 5;
-    private final int growTime = 10;
+	private int buyPrice = 5;
+    private int sellPrice = 7;
+    private final static int growTime = 10;
     private final String id = "Potato";
     public boolean isSeed = true;
 
@@ -12,9 +13,14 @@ public final class Potato implements Plant	{
     }
 
 	@Override
-	public int getPrice()	{
-		return price;
+	public int getBuyPrice()	{
+		return buyPrice;
 	}
+
+    @Override
+    public int getSellPrice()    {
+        return sellPrice;
+    }
 
     @Override
     public void accept(Visitor visitor) {

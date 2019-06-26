@@ -10,6 +10,7 @@ public class Inventory implements Paintable     {
         crops = new HashMap<Plant, Integer>();
 
         seeds.put(new Potato(), 0);
+        crops.put(new Potato(), 0);
     }
 
     public void addSeed(Plant seed)        {

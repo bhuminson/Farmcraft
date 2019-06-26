@@ -19,7 +19,7 @@ public class Farm implements Paintable	{
 	}
 
 	public boolean canAfford(Purchasable item)	{
-		return cash.getCash() >= item.getPrice();
+		return cash.getCash() >= item.getBuyPrice();
 	}
 
 	public void advance()	{

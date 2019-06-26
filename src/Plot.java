@@ -1,5 +1,6 @@
 public class Plot implements Paintable, Purchasable{
-	public int price = 100;
+	public int buyPrice = 100;
+	public int sellPrice = 70;
 	public boolean planted;
 	private Plant plant; 
 
@@ -7,8 +8,12 @@ public class Plot implements Paintable, Purchasable{
 		planted = false;
 	}
 
-	public int getPrice()	{
-		return price;
+	public int getBuyPrice()	{
+		return buyPrice;
+	}
+
+	public int getSellPrice()	{
+		return sellPrice;
 	}
 
 	public void setPlant(Plant plant)	{

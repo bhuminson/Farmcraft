@@ -44,25 +44,28 @@ public class ConsolePainter implements Visitor  {
 
     @Override
     public void visit(Inventory inv)        {
+        Potato potato = new Potato();
         System.out.println("**************** INVENTORY ****************");
-        System.out.println("\nSEEDS:");
-        System.out.println("\tPotato seeds: " + inv.seeds.get(new Potato()));
-
+        System.out.println("\n             *** SEEDS ***\n");
+        System.out.println("           Potato seeds: " + inv.seeds.get(potato));
+        System.out.println("\n             *** SELL ***\n");
+        System.out.println("           Potatoes: " + inv.crops.get(potato));
         System.out.println("*******************************************");
     }
 
     @Override
     public void visit(Market mkt)  {
+        Potato potato = new Potato();
         System.out.println("+++++++++++++++ MARKET +++++++++++++++");
         System.out.println("\nCash: " + mkt.userCash);
         System.out.println("\n             +++ BUY +++\n");
         System.out.println("           Potato seeds: ");
-        System.out.println("              Price: ");
-        System.out.println("              Your stock: ");
+        System.out.println("              Price: " + potato.getBuyPrice());
+        System.out.println("              Your stock: " + mkt.userInv.seeds.get(potato));
         System.out.println("\n             +++ SELL +++\n");
         System.out.println("           Potato: ");
-        System.out.println("              Price: ");
-        System.out.println("              Your stock: ");
+        System.out.println("              Price: " + potato.getSellPrice());
+        System.out.println("              Your stock: " + mkt.userInv.crops.get(potato));
         System.out.println("\n++++++++++++++++++++++++++++++++++++++");
     }
 } 

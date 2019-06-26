@@ -1,3 +1,4 @@
 public interface Purchasable {
-    int getPrice();
+    int getBuyPrice();
+    int getSellPrice();
 }
