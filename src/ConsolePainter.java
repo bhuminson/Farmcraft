@@ -60,11 +60,11 @@ public class ConsolePainter implements Visitor  {
         System.out.println("\nCash: " + mkt.userCash);
         System.out.println("\n             +++ BUY +++\n");
         System.out.println("           Potato seeds: ");
-        System.out.println("              Price: " + potato.getBuyPrice());
+        System.out.println("              Price: $" + potato.getBuyPrice());
         System.out.println("              Your stock: " + mkt.userInv.seeds.get(potato));
         System.out.println("\n             +++ SELL +++\n");
         System.out.println("           Potato: ");
-        System.out.println("              Price: " + potato.getSellPrice());
+        System.out.println("              Price: $" + potato.getSellPrice());
         System.out.println("              Your stock: " + mkt.userInv.crops.get(potato));
         System.out.println("\n++++++++++++++++++++++++++++++++++++++");
     }

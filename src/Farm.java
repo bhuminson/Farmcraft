@@ -13,7 +13,7 @@ public class Farm implements Paintable	{
 		this.name = name;
 		plots = new ArrayList<Plot>();
 		dayCount = new Day();
-		cash = new Money(3000);
+		cash = new Money(350);
 		inv = new Inventory();
 		mkt = new Market(cash, inv);
 	}
