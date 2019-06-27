@@ -39,7 +39,10 @@ public class ConsolePainter implements Visitor  {
 
     @Override
     public void visit(Potato potato)    {
-        System.out.print("P");
+        if(potato.isSeed())
+            System.out.print("p");
+        if(potato.isRipe())
+            System.out.print("P");
     }
 
     @Override

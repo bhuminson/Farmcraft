@@ -118,7 +118,7 @@ public class TextMode implements GUIMode    {
                     break;
 
                 case "p":
-                    int val = farm.plant(new Potato());
+                    int val = farm.plant(new Potato(farm.dayCount));
                     if(val == 0)    {
                         result = "Potato planted.";
                     } else if(val == 1) {

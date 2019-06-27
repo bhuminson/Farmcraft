@@ -24,6 +24,12 @@ public class Farm implements Paintable	{
 
 	public void advance()	{
 		dayCount.nextDay();
+		for(int i = 0; i < plots.size(); i++)  {
+            Plot curPlot = plots.get(i);
+            if(curPlot.planted)	{
+            	curPlot.getPlant().testRipe();
+            }
+        }
 	}
 
 	public boolean addPlot()	{

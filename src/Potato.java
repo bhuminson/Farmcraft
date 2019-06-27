@@ -3,9 +3,35 @@ import java.util.Objects;
 public final class Potato implements Plant	{
 	private int buyPrice = 5;
     private int sellPrice = 7;
-    private final static int growTime = 10;
+    private final int growTime = 10;
     private final String id = "Potato";
-    public boolean isSeed = true;
+    private boolean isSeed = true;
+    private boolean isRipe = false;
+    private boolean isWithered = false;
+    private int dayPlanted;
+    private Day dayCount;
+
+    public Potato() {
+        ;
+    }
+
+    public Potato(Day dayCount) {
+        this.dayCount = dayCount;
+        dayPlanted = dayCount.getDay();
+    }
+
+    @Override
+    public void testRipe()    {
+        if(dayCount.getDay() - dayPlanted >= growTime)  {
+            isSeed = false;
+            isRipe = true;
+        }
+    }
+
+    @Override
+    public boolean isRipe() {
+        return isRipe;
+    }
 
     @Override
     public boolean isSeed()     {
