@@ -25,7 +25,7 @@ public class Plot implements Paintable, Purchasable{
 		return plant;
 	}
 
-	public void harvest()	{
+	public void removePlant()	{
 		planted = false;
 		this.plant = null;
 	}

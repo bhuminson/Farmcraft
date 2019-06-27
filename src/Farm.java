@@ -32,6 +32,22 @@ public class Farm implements Paintable	{
         }
 	}
 
+	public boolean harvestAll()	{
+        boolean harvested = false;
+		for(int i = 0; i < plots.size(); i++)  {
+            Plot curPlot = plots.get(i);
+            if(curPlot.planted)	{
+            	if(curPlot.getPlant().isRipe())	{
+                    // System.out.println(curPlot.getPlant().hashCode());
+            		inv.addCrop(curPlot.getPlant());
+            		curPlot.removePlant();
+            		harvested = true;
+            	}
+            }
+        }
+        return harvested;
+	}
+
 	public boolean addPlot()	{
 		Plot newPlot = new Plot();
 		if(!canAfford(newPlot))	{

@@ -21,6 +21,7 @@ public class TextMode implements GUIMode    {
         System.out.println("\tPress 'i' to open your inventory");
         System.out.println("\tPress 'm' to go to the market");
         System.out.println("\tPress 's' to sleep");
+        System.out.println("\tPress 'h' to harvest any ripe crops");
         System.out.println("\tPress 'q' to quit");
         System.out.println("\n");
     }
@@ -145,6 +146,14 @@ public class TextMode implements GUIMode    {
                     result = "Welcome back!";
                     break;
 
+                case "h":
+                    if(farm.harvestAll())  {
+                        result = "Harvest success!";
+                    } else {
+                        result = "You have nothing to harvest...";
+                    }
+                    break;
+
                 default:
                     result = "Unrecognized command.";
                     break;
@@ -173,8 +182,6 @@ public class TextMode implements GUIMode    {
         System.out.print("Name your farm: ");
         String name = scan.nextLine();
         farm = new Farm(name);
-        nextScreen();
-        farmTutorial();
         showFarm();
     }
 }

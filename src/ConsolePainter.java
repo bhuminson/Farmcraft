@@ -48,17 +48,19 @@ public class ConsolePainter implements Visitor  {
     @Override
     public void visit(Inventory inv)        {
         Potato potato = new Potato();
+        Potato potatogrown = new Potato(3);
         System.out.println("**************** INVENTORY ****************");
         System.out.println("\n             *** SEEDS ***\n");
         System.out.println("           Potato seeds: " + inv.seeds.get(potato));
-        System.out.println("\n             *** SELL ***\n");
-        System.out.println("           Potatoes: " + inv.crops.get(potato));
+        System.out.println("\n             *** CROPS ***\n");
+        System.out.println("           Potatoes: " + inv.crops.get(potatogrown));
         System.out.println("*******************************************");
     }
 
     @Override
     public void visit(Market mkt)  {
         Potato potato = new Potato();
+        Potato potatogrown = new Potato(3);
         System.out.println("+++++++++++++++ MARKET +++++++++++++++");
         System.out.println("\nCash: " + mkt.userCash);
         System.out.println("\n             +++ BUY +++\n");
@@ -68,7 +70,7 @@ public class ConsolePainter implements Visitor  {
         System.out.println("\n             +++ SELL +++\n");
         System.out.println("           Potato: ");
         System.out.println("              Price: $" + potato.getSellPrice());
-        System.out.println("              Your stock: " + mkt.userInv.crops.get(potato));
+        System.out.println("              Your stock: " + mkt.userInv.crops.get(potatogrown));
         System.out.println("\n++++++++++++++++++++++++++++++++++++++");
     }
 } 

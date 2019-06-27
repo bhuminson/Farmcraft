@@ -15,6 +15,10 @@ public final class Potato implements Plant	{
         ;
     }
 
+    public Potato(int dummy)        {
+        isSeed = false;
+    }
+
     public Potato(Day dayCount) {
         this.dayCount = dayCount;
         dayPlanted = dayCount.getDay();
@@ -64,6 +68,6 @@ public final class Potato implements Plant	{
 
     @Override
     public int hashCode()       {
-        return Objects.hash(id, isSeed);
+        return Objects.hash(id);
     }
 }
