@@ -60,7 +60,7 @@ public class ConsolePainter implements Visitor  {
         System.out.println("           Potato seeds: " + inv.getSeeds().get(potatoSeed));
         System.out.println("\n             *** CROPS ***\n");
         System.out.println("           Potatoes: " + inv.getCrops().get(potato));
-        System.out.println("*******************************************");
+        System.out.println("\n*******************************************");
     }
 
     @Override
