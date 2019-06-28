@@ -1,11 +1,15 @@
 public interface GUIMode  {
+
+    void setup();
+    void nextScreen();
+    void gameLoop();
+
     void farmTutorial();
     void invTutorial();
     void mktTutorial();
-    void nextScreen();
-    void setup();
+
+    
     void showFarm();
     void showInventory();
     void showMarket();
-    void gameLoop();
 }

@@ -1,4 +1,5 @@
 public class Day {
+    
     private int day;
 
     public Day() {

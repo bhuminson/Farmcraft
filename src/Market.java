@@ -1,12 +1,25 @@
 public class Market implements Paintable    {
-    public Money userCash;
-    public Inventory userInv;
-    public Inventory mktInv;
+
+    private Money userCash;
+    private Inventory userInv;
+    private Inventory mktInv;
 
     public Market(Money cash, Inventory userInv) {
         this.userCash = cash;
         this.userInv = userInv;
         mktInv = new Inventory();
+    }
+
+    public Money getUserCash()    {
+        return userCash;
+    }
+
+    public Inventory getUserInv()   {
+        return userInv;
+    }
+
+    public Inventory mktInv()   {
+        return mktInv;
     }
 
     public boolean buySeed(Buyable item)    {

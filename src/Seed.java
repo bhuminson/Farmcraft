@@ -1,12 +1,10 @@
-import java.util.Objects;
-
 public abstract class Seed extends Plant implements Buyable, Paintable  {
     protected int buyPrice;
     protected int growTime;
     protected int dayPlanted;
     protected Day dayCount;
 
-    public Seed(){}
+    public Seed() {}
 
     public Seed(Day dayCount)   {
         this.dayCount = dayCount;

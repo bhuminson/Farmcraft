@@ -1,6 +1,5 @@
-import java.util.Objects;
-
 public abstract class Crop extends Plant implements Sellable, Paintable    {
+    
     protected int sellPrice;
 
     @Override

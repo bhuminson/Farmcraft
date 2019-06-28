@@ -1,6 +1,6 @@
-public class Main {
+public final class Main {
 
-    public static GUIMode gui = new TextMode();
+    private static final GUIMode gui = new TextMode();
 
 	public static void main(String[] args) {
         gui.setup();

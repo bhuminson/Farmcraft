@@ -1,7 +1,8 @@
 public class Plot implements Paintable, Buyable, Sellable {
-	public int buyPrice;
-	public int sellPrice;
-	public boolean planted;
+
+	private int buyPrice;
+	private int sellPrice;
+	private boolean planted;
 	private Plant plant; 
 
 	public Plot()	{
@@ -18,6 +19,10 @@ public class Plot implements Paintable, Buyable, Sellable {
 	@Override
 	public int getSellPrice()	{
 		return sellPrice;
+	}
+
+	public boolean isPlanted()	{
+		return planted;
 	}
 
 	public void setPlant(Plant plant)	{

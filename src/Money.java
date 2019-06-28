@@ -1,5 +1,6 @@
 public class Money  {
-    public int cash;
+    
+    private int cash;
 
     public Money(int startAmt)  {
         cash = startAmt;
@@ -19,6 +20,10 @@ public class Money  {
 
     public void deposit(int amt) {
         cash += amt;
+    }
+
+    public boolean canAfford(Buyable item)  {
+        return cash >= item.getBuyPrice();
     }
 
     public String toString()    {

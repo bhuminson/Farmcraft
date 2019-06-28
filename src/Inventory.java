@@ -2,14 +2,18 @@ import java.util.Map;
 import java.util.HashMap;
 
 public class Inventory implements Paintable     {
-    public Map<Seed, Integer> seeds;
-    public Map<Crop, Integer> crops;
+    private Map<Seed, Integer> seeds;
+    private Map<Crop, Integer> crops;
 
     public Inventory()      {
         seeds = new HashMap<Seed, Integer>();
         crops = new HashMap<Crop, Integer>();
         seeds.put(new PotatoSeed(), 0);
         crops.put(new Potato(), 0);
+    }
+
+    public Map getSeeds()   {
+        return seeds;
     }
 
     public void addSeed(Seed seed)        {
@@ -20,6 +24,10 @@ public class Inventory implements Paintable     {
     public void removeSeed(Seed seed)        {
         int count = seeds.get(seed);
         seeds.put(seed, count - 1);
+    }
+
+    public Map getCrops()   {
+        return crops;
     }
 
     public void addCrop(Crop crop) {

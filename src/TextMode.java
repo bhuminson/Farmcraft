@@ -2,10 +2,10 @@ import java.util.Scanner;
 
 public class TextMode implements GUIMode    {
 
-    Scanner scan = new Scanner(System.in);
-    Visitor consolePainter = new ConsolePainter();
-    boolean quit = false;
-    Farm farm;
+    private Scanner scan = new Scanner(System.in);
+    private Visitor consolePainter = new ConsolePainter();
+    private boolean quit = false;
+    private Farm farm;
 
     @Override
     public void invTutorial()       {
