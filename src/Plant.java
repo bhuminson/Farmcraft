@@ -1,6 +1,6 @@
 import java.util.Objects;
 
-public class Plant {
+public class Plant   {
     protected String id;
 
     public String getID()   {
