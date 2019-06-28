@@ -8,7 +8,7 @@ public class Inventory implements Paintable     {
     public Inventory()      {
         seeds = new HashMap<Seed, Integer>();
         crops = new HashMap<Crop, Integer>();
-        seeds.put(new PotatoSeed(new Day()), 0);
+        seeds.put(new PotatoSeed(), 0);
         crops.put(new Potato(), 0);
     }
 
