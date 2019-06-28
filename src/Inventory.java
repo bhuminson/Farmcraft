@@ -2,36 +2,32 @@ import java.util.Map;
 import java.util.HashMap;
 
 public class Inventory implements Paintable     {
-    public Map<Plant, Integer> seeds;
-    public Map<Plant, Integer> crops;
+    public Map<Seed, Integer> seeds;
+    public Map<Crop, Integer> crops;
 
     public Inventory()      {
-        seeds = new HashMap<Plant, Integer>();
-        crops = new HashMap<Plant, Integer>();
-        seeds.put(new Potato(), 0);
-        crops.put(new Potato(2), 0);
+        seeds = new HashMap<Seed, Integer>();
+        crops = new HashMap<Crop, Integer>();
+        seeds.put(new PotatoSeed(new Day()), 0);
+        crops.put(new Potato(), 0);
     }
 
-    public void addSeed(Plant seed)        {
-        assert seed.isSeed() == true;
-
+    public void addSeed(Seed seed)        {
         int count = seeds.get(seed);
         seeds.put(seed, count+1);
     }
 
-    public void removeSeed(Plant seed)        {
+    public void removeSeed(Seed seed)        {
         int count = seeds.get(seed);
         seeds.put(seed, count - 1);
     }
 
-    public void addCrop(Plant crop) {
-        assert crop.isSeed() == false;
-
+    public void addCrop(Crop crop) {
         int count = crops.get(crop);
         crops.put(crop, count+1);
     }
 
-    public void removeCrop(Plant crop)  {
+    public void removeCrop(Crop crop)  {
         assert crops.containsKey(crop);
 
         if(crops.containsKey(crop)) {
@@ -48,7 +44,7 @@ public class Inventory implements Paintable     {
 
     public boolean checkStock(Plant plantable)  {
         boolean stocked;
-        if (plantable.isSeed()) {
+        if (plantable instanceof Seed) {
             stocked = (seeds.get(plantable) == 0) ? false: true;
             
         } else {

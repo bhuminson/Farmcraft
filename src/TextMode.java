@@ -73,7 +73,7 @@ public class TextMode implements GUIMode    {
                     exit = true;
                     break;
                 case "p":
-                    if(farm.mkt.buySeed(new Potato()))   {
+                    if(farm.mkt.buySeed(new PotatoSeed()))   {
                         result = "Thank you for your purchase.";
                         break;
                     } else {
@@ -119,7 +119,7 @@ public class TextMode implements GUIMode    {
                     break;
 
                 case "p":
-                    int val = farm.plant(new Potato(farm.dayCount));
+                    int val = farm.plant(new PotatoSeed(farm.dayCount));
                     if(val == 0)    {
                         result = "Potato planted.";
                     } else if(val == 1) {

@@ -18,7 +18,7 @@ public class Farm implements Paintable	{
 		mkt = new Market(cash, inv);
 	}
 
-	public boolean canAfford(Purchasable item)	{
+	public boolean canAfford(Buyable item)	{
 		return cash.getCash() >= item.getBuyPrice();
 	}
 
@@ -26,8 +26,12 @@ public class Farm implements Paintable	{
 		dayCount.nextDay();
 		for(int i = 0; i < plots.size(); i++)  {
             Plot curPlot = plots.get(i);
-            if(curPlot.planted)	{
-            	curPlot.getPlant().testRipe();
+            Plant plant = curPlot.getPlant();
+            if(plant instanceof Seed)	{
+                Seed seed = (Seed)plant;
+            	if(seed.isRipe())   {
+                    curPlot.setPlant(seed.transform());
+                }
             }
         }
 	}
@@ -36,13 +40,11 @@ public class Farm implements Paintable	{
         boolean harvested = false;
 		for(int i = 0; i < plots.size(); i++)  {
             Plot curPlot = plots.get(i);
-            if(curPlot.planted)	{
-            	if(curPlot.getPlant().isRipe())	{
-                    // System.out.println(curPlot.getPlant().hashCode());
-            		inv.addCrop(curPlot.getPlant());
-            		curPlot.removePlant();
-            		harvested = true;
-            	}
+            Plant plant = curPlot.getPlant();
+            if(plant instanceof Crop)	{
+            	inv.addCrop((Crop)plant);
+            	curPlot.removePlant();
+        		harvested = true;
             }
         }
         return harvested;
@@ -66,7 +68,7 @@ public class Farm implements Paintable	{
 		return true;
 	}
 
-	public int plant(Plant seed)	{
+	public int plant(Seed seed)	{
 		if(inv.checkStock(seed) == false)	{
 			return 1; // no seeds
 		}

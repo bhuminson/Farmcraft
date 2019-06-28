@@ -29,7 +29,12 @@ public class ConsolePainter implements Visitor  {
         } else {
             for(int i = 0; i < PLOT_HEIGHT; i++)    {
                 for(int j = 0; j < PLOT_WIDTH; j++) {
-                    plot.getPlant().accept(this);
+                    Plant plant = plot.getPlant();
+                    if(plant instanceof Seed)   {
+                        ((Seed)plant).accept(this);
+                    } else {
+                        ((Crop)plant).accept(this);
+                    }
                 }
                 System.out.println("");
             }
@@ -39,38 +44,40 @@ public class ConsolePainter implements Visitor  {
 
     @Override
     public void visit(Potato potato)    {
-        if(potato.isSeed())
-            System.out.print("p");
-        if(potato.isRipe())
-            System.out.print("P");
+        System.out.print("P");
+    }
+
+    @Override
+    public void visit(PotatoSeed seed)    {
+        System.out.print("p");
     }
 
     @Override
     public void visit(Inventory inv)        {
+        PotatoSeed potatoSeed = new PotatoSeed(new Day());
         Potato potato = new Potato();
-        Potato potatogrown = new Potato(3);
         System.out.println("**************** INVENTORY ****************");
         System.out.println("\n             *** SEEDS ***\n");
-        System.out.println("           Potato seeds: " + inv.seeds.get(potato));
+        System.out.println("           Potato seeds: " + inv.seeds.get(potatoSeed));
         System.out.println("\n             *** CROPS ***\n");
-        System.out.println("           Potatoes: " + inv.crops.get(potatogrown));
+        System.out.println("           Potatoes: " + inv.crops.get(potato));
         System.out.println("*******************************************");
     }
 
     @Override
     public void visit(Market mkt)  {
+        PotatoSeed potatoSeed = new PotatoSeed(new Day());
         Potato potato = new Potato();
-        Potato potatogrown = new Potato(3);
         System.out.println("+++++++++++++++ MARKET +++++++++++++++");
         System.out.println("\nCash: " + mkt.userCash);
         System.out.println("\n             +++ BUY +++\n");
         System.out.println("           Potato seeds: ");
-        System.out.println("              Price: $" + potato.getBuyPrice());
-        System.out.println("              Your stock: " + mkt.userInv.seeds.get(potato));
+        System.out.println("              Price: $" + potatoSeed.getBuyPrice());
+        System.out.println("              Your stock: " + mkt.userInv.seeds.get(potatoSeed));
         System.out.println("\n             +++ SELL +++\n");
         System.out.println("           Potato: ");
         System.out.println("              Price: $" + potato.getSellPrice());
-        System.out.println("              Your stock: " + mkt.userInv.crops.get(potatogrown));
+        System.out.println("              Your stock: " + mkt.userInv.crops.get(potato));
         System.out.println("\n++++++++++++++++++++++++++++++++++++++");
     }
 } 

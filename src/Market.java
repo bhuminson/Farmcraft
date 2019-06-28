@@ -9,11 +9,11 @@ public class Market implements Paintable    {
         mktInv = new Inventory();
     }
 
-    public boolean buySeed(Purchasable item)    {
-        assert item instanceof Plant;
+    public boolean buySeed(Buyable item)    {
+        assert item instanceof Seed;
 
         if(userCash.withdraw(item.getBuyPrice()))  {
-            userInv.addSeed((Plant)item);
+            userInv.addSeed((Seed)item);
             return true;
         }
         return false;
