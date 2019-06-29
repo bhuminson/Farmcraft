@@ -2,12 +2,12 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class Farm implements Paintable	{
-	public String name;
-	public List<Plot> plots;
-	public Money cash;
-	public Day dayCount;
-    public Inventory inv;
-    public Market mkt;
+	private String name;
+	private List<Plot> plots;
+	private Money cash;
+	private Day dayCount;
+    private Inventory inv;
+    private Market mkt;
 
 	public Farm(String name)	{
 		this.name = name;
@@ -17,6 +17,30 @@ public class Farm implements Paintable	{
 		inv = new Inventory();
 		mkt = new Market(cash, inv);
 	}
+
+    public String getName() {
+        return name;
+    }
+
+    public List<Plot> getPlots()    {
+        return plots;
+    }
+
+    public Money getCash()  {
+        return cash;
+    }
+
+    public Day getDayCount()    {
+        return dayCount;
+    }
+
+    public Inventory accessInv()    {
+        return inv;
+    }
+
+    public Market visitMkt() {
+        return mkt;
+    }
 
 	public void advance()	{
 		dayCount.nextDay();
@@ -45,7 +69,6 @@ public class Farm implements Paintable	{
         		harvested = true;
             }
         }
-
         return harvested;
 	}
 
@@ -56,7 +79,7 @@ public class Farm implements Paintable	{
 		}
 
 		plots.add(newPlot);
-		cash.withdraw(100);
+		cash.withdraw(newPlot.getBuyPrice());
 		return true;
 	}
 
@@ -66,11 +89,13 @@ public class Farm implements Paintable	{
 		}
 
 		plots.remove(plots.size() - 1);
+        Plot temp = new Plot();
+        cash.deposit(temp.getSellPrice());
 		return true;
 	}
 
 	public int plant(Seed seed)	{
-		if(inv.checkStock(seed) == false)	{
+		if(!inv.checkStock(seed))	{
 			return 1; // no seeds
 		}
 

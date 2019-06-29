@@ -6,11 +6,11 @@ public class ConsolePainter implements Visitor  {
     @Override
     public void visit(Farm farm)    {
         System.out.println("______________________________________________________");
-        System.out.println(farm.name);
-        System.out.println(farm.cash);
-        System.out.println(farm.dayCount);
+        System.out.println(farm.getName());
+        System.out.println(farm.getCash());
+        System.out.println(farm.getDayCount());
         System.out.println("");
-        for(Plot plot: farm.plots)  {
+        for(Plot plot: farm.getPlots())  {
             plot.accept(this);
         }
         System.out.println("______________________________________________________");
@@ -53,7 +53,7 @@ public class ConsolePainter implements Visitor  {
 
     @Override
     public void visit(Inventory inv)        {
-        PotatoSeed potatoSeed = new PotatoSeed();
+        PotatoSeed potatoSeed = new PotatoSeed(new Day());
         Potato potato = new Potato();
         System.out.println("**************** INVENTORY ****************");
         System.out.println("\n             *** SEEDS ***\n");
@@ -65,7 +65,7 @@ public class ConsolePainter implements Visitor  {
 
     @Override
     public void visit(Market mkt)  {
-        PotatoSeed potatoSeed = new PotatoSeed();
+        PotatoSeed potatoSeed = new PotatoSeed(new Day());
         Potato potato = new Potato();
         System.out.println("+++++++++++++++ MARKET +++++++++++++++");
         System.out.println("\nCash: " + mkt.getUserCash());

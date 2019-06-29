@@ -1,15 +1,9 @@
 public final class PotatoSeed extends Seed {
 
-    public PotatoSeed() {
-        buyPrice = 5;
-        growTime = 10;
-        id = "Potato";
-    }
-    
     public PotatoSeed(Day dayCount) {
         super(dayCount);
         buyPrice = 5;
-        growTime = 10;
+        growTime = 5;
         id = "Potato";
     }
 

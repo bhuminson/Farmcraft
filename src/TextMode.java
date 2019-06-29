@@ -30,6 +30,7 @@ public class TextMode implements GUIMode    {
     public void mktTutorial()   {
         System.out.println("\nWelcome to Farm Depot!\n");
         System.out.println("Press 'p' to buy potato seeds");
+        System.out.println("Press 's' to sell all your crops");
         System.out.println("Press 'm' to go back to the farm\n");
     }
 
@@ -44,7 +45,7 @@ public class TextMode implements GUIMode    {
     public void showInventory()     {
         nextScreen();
         invTutorial();
-        farm.inv.accept(consolePainter);
+        farm.accessInv().accept(consolePainter);
     }
 
     public void invLoop()    {
@@ -60,7 +61,7 @@ public class TextMode implements GUIMode    {
     public void showMarket()   {
         nextScreen();
         mktTutorial();
-        farm.mkt.accept(consolePainter);
+        farm.visitMkt().accept(consolePainter);
     }
 
     public void mktLoop()   {
@@ -72,14 +73,23 @@ public class TextMode implements GUIMode    {
                 case "m":
                     exit = true;
                     break;
+
                 case "p":
-                    if(farm.mkt.buySeed(new PotatoSeed()))   {
+                    if(farm.visitMkt().buySeed(new PotatoSeed(new Day())))   {
                         result = "Thank you for your purchase.";
-                        break;
                     } else {
                         result = "Insufficient funds.";
-                        break;
                     }
+                    break;
+
+                case "s":
+                    if (farm.visitMkt().sellAll())  {
+                        result = "Thank you for your business.";
+                    } else {
+                        result = "You have nothing to sell...";
+                    }
+                    break;
+
                 default:
                     result = "Unrecognized command.";
             }
@@ -119,7 +129,7 @@ public class TextMode implements GUIMode    {
                     break;
 
                 case "p":
-                    int val = farm.plant(new PotatoSeed(farm.dayCount));
+                    int val = farm.plant(new PotatoSeed(farm.getDayCount()));
                     if(val == 0)    {
                         result = "Potato planted.";
                     } else if(val == 1) {

@@ -15,6 +15,6 @@ public class Day {
     }
 
     public String toString()    {
-        return "Day: " + day;
+        return "Day " + day;
     }
 }

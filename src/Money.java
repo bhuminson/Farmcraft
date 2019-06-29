@@ -1,12 +1,12 @@
 public class Money  {
     
-    private int cash;
+    private double cash;
 
     public Money(int startAmt)  {
         cash = startAmt;
     }
 
-    public int getCash()    {
+    public double getCash()    {
         return cash;
     }
 
@@ -27,6 +27,6 @@ public class Money  {
     }
 
     public String toString()    {
-        return "$" + cash;
+        return "$" + String.format("%.2f", cash);
     }
 }
