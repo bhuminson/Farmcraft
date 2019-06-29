@@ -1,6 +1,6 @@
 public final class Potato extends Crop	{
 
-    public Potato() {
+    Potato() {
         sellPrice = 7;
         id = "Potato";
     }

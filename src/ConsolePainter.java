@@ -7,9 +7,9 @@ public class ConsolePainter implements Visitor  {
     public void visit(Farm farm)    {
         System.out.println("______________________________________________________");
         System.out.println(farm.getName());
-        System.out.println(farm.getCash());
+        System.out.println(farm.getFinances());
         System.out.println(farm.getDayCount());
-        System.out.println("");
+        System.out.println();
         for(Plot plot: farm.getPlots())  {
             plot.accept(this);
         }
@@ -18,12 +18,12 @@ public class ConsolePainter implements Visitor  {
 
     @Override
     public void visit(Plot plot)    {
-        if(!plot.isPlanted()) {
+        if(plot.isEmpty()) {
             for(int i = 0; i < PLOT_HEIGHT; i++)    {
                 for(int j = 0; j < PLOT_WIDTH; j++) {
                     System.out.print("-");
                 }
-                System.out.println("");
+                System.out.println();
             }
         } else {
             for(int i = 0; i < PLOT_HEIGHT; i++)    {
@@ -35,10 +35,10 @@ public class ConsolePainter implements Visitor  {
                         ((Crop)plant).accept(this);
                     }
                 }
-                System.out.println("");
+                System.out.println();
             }
         }
-        System.out.println("");
+        System.out.println();
     }
 
     @Override

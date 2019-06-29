@@ -1,9 +1,9 @@
 import java.util.Objects;
 
 public class Plant   {
-    protected String id;
+    String id;
 
-    public String getID()   {
+    String getID()   {
         return id;
     }
 

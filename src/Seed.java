@@ -1,12 +1,10 @@
 public abstract class Seed extends Plant implements Buyable, Paintable  {
-    protected int buyPrice;
-    protected int growTime;
-    protected int dayPlanted;
-    protected Day dayCount;
+    int buyPrice;
+    int growTime;
+    private int dayPlanted;
+    private Day dayCount;
 
-    public Seed() {}
-
-    public Seed(Day dayCount)   {
+    Seed(Day dayCount)   {
         this.dayCount = dayCount;
         dayPlanted = dayCount.getDay();
     }
@@ -16,19 +14,16 @@ public abstract class Seed extends Plant implements Buyable, Paintable  {
         return buyPrice;
     }
 
-    public int getGrowTime()    {
+    private int getGrowTime()    {
         return growTime;
     }
 
-    public int getDayPlanted()  {
+    private int getDayPlanted()  {
         return dayPlanted;
     }
 
-    public boolean isRipe()  {
-        if(dayCount.getDay() - getDayPlanted() >= getGrowTime())    {
-            return true;
-        }
-        return false;
+    boolean isRipe()  {
+        return dayCount.getDay() - getDayPlanted() >= getGrowTime();
     }
 
     public abstract Crop transform();

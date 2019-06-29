@@ -8,7 +8,7 @@ public interface GUIMode  {
     void invTutorial();
     void mktTutorial();
 
-    
+
     void showFarm();
     void showInventory();
     void showMarket();

@@ -48,7 +48,7 @@ public class TextMode implements GUIMode    {
         farm.accessInv().accept(consolePainter);
     }
 
-    public void invLoop()    {
+    private void invLoop()    {
         while(true)    {
             if(scan.nextLine().equals("i"))    {
                 break;
@@ -64,7 +64,7 @@ public class TextMode implements GUIMode    {
         farm.visitMkt().accept(consolePainter);
     }
 
-    public void mktLoop()   {
+    private void mktLoop()   {
         boolean exit = false;
         while(!exit)    {
             String input = scan.nextLine().toLowerCase();

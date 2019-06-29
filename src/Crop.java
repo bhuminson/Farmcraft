@@ -1,6 +1,6 @@
 public abstract class Crop extends Plant implements Sellable, Paintable    {
     
-    protected int sellPrice;
+    int sellPrice;
 
     @Override
     public int getSellPrice()   {

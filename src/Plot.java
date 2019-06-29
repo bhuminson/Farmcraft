@@ -5,7 +5,7 @@ public class Plot implements Paintable, Buyable, Sellable {
 	private boolean planted;
 	private Plant plant; 
 
-	public Plot()	{
+	Plot()	{
 		planted = false;
 		buyPrice = 100;
 		sellPrice = 70;
@@ -21,20 +21,20 @@ public class Plot implements Paintable, Buyable, Sellable {
 		return sellPrice;
 	}
 
-	public boolean isPlanted()	{
-		return planted;
+	boolean isEmpty()	{
+		return !planted;
 	}
 
-	public void setPlant(Plant plant)	{
+	void setPlant(Plant plant)	{
 		planted = true;
 		this.plant = plant;
 	}
 
-	public Plant getPlant()	{
+	Plant getPlant()	{
 		return plant;
 	}
 
-	public void removePlant()	{
+	void removePlant()	{
 		planted = false;
 		this.plant = null;
 	}

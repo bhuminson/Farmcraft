@@ -1,6 +1,6 @@
 public final class PotatoSeed extends Seed {
 
-    public PotatoSeed(Day dayCount) {
+    PotatoSeed(Day dayCount) {
         super(dayCount);
         buyPrice = 5;
         growTime = 5;

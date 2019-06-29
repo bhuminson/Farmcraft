@@ -4,105 +4,102 @@ import java.util.ArrayList;
 public class Farm implements Paintable	{
 	private String name;
 	private List<Plot> plots;
-	private Money cash;
+	private Bank finances;
 	private Day dayCount;
     private Inventory inv;
     private Market mkt;
 
 	public Farm(String name)	{
 		this.name = name;
-		plots = new ArrayList<Plot>();
+		plots = new ArrayList<>();
 		dayCount = new Day();
-		cash = new Money(350);
+		finances = new Bank(350);
 		inv = new Inventory();
-		mkt = new Market(cash, inv);
+		mkt = new Market(finances, inv);
 	}
 
-    public String getName() {
+	String getName() {
         return name;
     }
 
-    public List<Plot> getPlots()    {
+    List<Plot> getPlots()    {
         return plots;
     }
 
-    public Money getCash()  {
-        return cash;
+	Bank getFinances()  {
+        return finances;
     }
 
-    public Day getDayCount()    {
+    Day getDayCount()    {
         return dayCount;
     }
 
-    public Inventory accessInv()    {
+    Inventory accessInv()    {
         return inv;
     }
 
-    public Market visitMkt() {
+    Market visitMkt() {
         return mkt;
     }
 
-	public void advance()	{
+    void advance()	{
 		dayCount.nextDay();
 
-		for(int i = 0; i < plots.size(); i++)  {
-            Plot curPlot = plots.get(i);
-            Plant plant = curPlot.getPlant();
+		for(Plot plot: plots)  {
+            Plant plant = plot.getPlant();
             if(plant instanceof Seed)	{
                 Seed seed = (Seed)plant;
             	if(seed.isRipe())   {
-                    curPlot.setPlant(seed.transform());
+                    plot.setPlant(seed.transform());
                 }
             }
         }
 	}
 
-	public boolean harvestAll()	{
+	boolean harvestAll()	{
         boolean harvested = false;
 
-		for(int i = 0; i < plots.size(); i++)  {
-            Plot curPlot = plots.get(i);
-            Plant plant = curPlot.getPlant();
+		for(Plot plot: plots)  {
+            Plant plant = plot.getPlant();
             if(plant instanceof Crop)	{
             	inv.addCrop((Crop)plant);
-            	curPlot.removePlant();
+            	plot.removePlant();
         		harvested = true;
             }
         }
         return harvested;
 	}
 
-	public boolean addPlot()	{
+	boolean addPlot()	{
 		Plot newPlot = new Plot();
-		if(!cash.canAfford(newPlot))	{
+		if(!finances.canAfford(newPlot))	{
 			return false;
 		}
 
 		plots.add(newPlot);
-		cash.withdraw(newPlot.getBuyPrice());
+		finances.withdraw(newPlot.getBuyPrice());
 		return true;
 	}
 
-	public boolean removePlot()	{
+	boolean removePlot()	{
 		if(plots.size() == 0)	{
 			return false;
 		}
 
 		plots.remove(plots.size() - 1);
         Plot temp = new Plot();
-        cash.deposit(temp.getSellPrice());
+        finances.deposit(temp.getSellPrice());
 		return true;
 	}
 
-	public int plant(Seed seed)	{
+	int plant(Seed seed)	{
 		if(!inv.checkStock(seed))	{
 			return 1; // no seeds
 		}
 
-		for(int i = 0; i < plots.size(); i++)  {
-            Plot curPlot = plots.get(i);
-            if(!curPlot.isPlanted())  {
-                curPlot.setPlant(seed);
+		for(Plot plot: plots)  {
+            if(plot.isEmpty())  {
+                plot.setPlant(seed);
                 inv.removeSeed(seed);
                 return 0; //success
             }

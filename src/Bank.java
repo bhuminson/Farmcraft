@@ -1,16 +1,16 @@
-public class Money  {
+public class Bank  {
     
     private double cash;
 
-    public Money(int startAmt)  {
+    Bank(int startAmt)  {
         cash = startAmt;
     }
 
-    public double getCash()    {
+    private double getCash()    {
         return cash;
     }
 
-    public boolean withdraw(int amt)    {
+    boolean withdraw(int amt)    {
         if(cash < amt)  {
             return false;
         }
@@ -18,15 +18,15 @@ public class Money  {
         return true;
     }
 
-    public void deposit(int amt) {
+    void deposit(int amt) {
         cash += amt;
     }
 
-    public boolean canAfford(Buyable item)  {
+    boolean canAfford(Buyable item)  {
         return cash >= item.getBuyPrice();
     }
 
     public String toString()    {
-        return "$" + String.format("%.2f", cash);
+        return "$" + String.format("%.2f", getCash());
     }
 }

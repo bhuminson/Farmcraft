@@ -2,15 +2,15 @@ public class Day {
     
     private int day;
 
-    public Day() {
+    Day() {
         day = 0;
     }
 
-    public int getDay() {
+    int getDay() {
         return day;
     }
 
-    public void nextDay() {
+    void nextDay() {
         day++;
     }
 

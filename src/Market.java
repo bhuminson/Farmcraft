@@ -1,22 +1,22 @@
 public class Market implements Paintable    {
 
-    private Money userCash;
+    private Bank userCash;
     private Inventory userInv;
 
-    public Market(Money cash, Inventory userInv) {
+    public Market(Bank cash, Inventory userInv) {
         this.userCash = cash;
         this.userInv = userInv;
     }
 
-    public Money getUserCash()    {
+    Bank getUserCash()    {
         return userCash;
     }
 
-    public Inventory getUserInv()   {
+    Inventory getUserInv()   {
         return userInv;
     }
 
-    public boolean buySeed(Buyable item)    {
+    boolean buySeed(Buyable item)    {
         assert item instanceof Seed;
 
         if(userCash.withdraw(item.getBuyPrice()))  {
@@ -26,7 +26,7 @@ public class Market implements Paintable    {
         return false;
     }
 
-    public boolean sellCrop(Sellable item)  {
+    private boolean sellCrop(Sellable item)  {
         assert item instanceof Crop;
 
         if(userInv.checkStock((Crop)item))    {
@@ -37,7 +37,7 @@ public class Market implements Paintable    {
         return false;
     }
 
-    public boolean sellAll()    {
+    boolean sellAll()    {
         boolean sold = false;
         Potato potato = new Potato();
         while(sellCrop(potato)) {

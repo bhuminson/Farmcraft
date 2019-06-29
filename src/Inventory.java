@@ -6,48 +6,48 @@ public class Inventory implements Paintable     {
     private Map<Crop, Integer> crops;
 
     public Inventory()      {
-        seeds = new HashMap<Seed, Integer>();
-        crops = new HashMap<Crop, Integer>();
+        seeds = new HashMap<>();
+        crops = new HashMap<>();
         seeds.put(new PotatoSeed(new Day()), 0);
         crops.put(new Potato(), 0);
     }
 
-    public Map getSeeds()   {
+    Map getSeeds()   {
         return seeds;
     }
 
-    public void addSeed(Seed seed)        {
+    void addSeed(Seed seed)        {
         int count = seeds.get(seed);
         seeds.put(seed, count+1);
     }
 
-    public void removeSeed(Seed seed)        {
+    void removeSeed(Seed seed)        {
         int count = seeds.get(seed);
         seeds.put(seed, count - 1);
     }
 
-    public Map getCrops()   {
+    Map getCrops()   {
         return crops;
     }
 
-    public void addCrop(Crop crop) {
+    void addCrop(Crop crop) {
         int count = crops.get(crop);
         crops.put(crop, count+1);
     }
 
-    public void removeCrop(Crop crop)  {
+    void removeCrop(Crop crop)  {
         int count = crops.get(crop);
         crops.put(crop, count - 1);
     }
 
-    public boolean checkStock(Plant plantable)  {
-        boolean stocked;
+    boolean checkStock(Plant plantable)  {
+        boolean stocked = false;
         
         if (plantable instanceof Seed) {
-            stocked = (seeds.get(plantable) == 0) ? false: true;
+            stocked = (seeds.get(plantable) != 0);
             
-        } else {
-            stocked = (crops.get(plantable) == 0) ? false: true;
+        } else if(plantable instanceof Crop) {
+            stocked = (crops.get(plantable) != 0);
         }
         return stocked;
     }
