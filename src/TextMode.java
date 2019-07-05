@@ -15,9 +15,11 @@ public class TextMode implements GUIMode    {
     @Override
     public void farmTutorial()  {
         System.out.println("Controls:");
-        System.out.println("\tPress 'a' to add a plot ($100)");
-        System.out.println("\tPress 'r' to remove a plot");
+        // System.out.println("\tPress 'a' to add a plot ($100)");
+        // System.out.println("\tPress 'r' to remove a plot");
         System.out.println("\tPress 'p' to plant a potato");
+        System.out.println("\tPress 'c' to plant a carrot");
+        System.out.println("\tPress 'b' to plant a beet");
         System.out.println("\tPress 'i' to open your inventory");
         System.out.println("\tPress 'm' to go to the market");
         System.out.println("\tPress 's' to sleep");
@@ -30,6 +32,8 @@ public class TextMode implements GUIMode    {
     public void mktTutorial()   {
         System.out.println("\nWelcome to Farm Depot!\n");
         System.out.println("Press 'p' to buy potato seeds");
+        System.out.println("Press 'c' to buy carrot seeds");
+        System.out.println("Press 'b' to buy beet seeds");
         System.out.println("Press 's' to sell all your crops");
         System.out.println("Press 'm' to go back to the farm\n");
     }
@@ -82,6 +86,22 @@ public class TextMode implements GUIMode    {
                     }
                     break;
 
+                case "c":
+                    if(farm.visitMkt().buySeed(new CarrotSeed(new Day())))   {
+                        result = "Thank you for your purchase.";
+                    } else {
+                        result = "Insufficient funds.";
+                    }
+                    break;
+
+                case "b":
+                    if(farm.visitMkt().buySeed(new BeetSeed(new Day())))   {
+                        result = "Thank you for your purchase.";
+                    } else {
+                        result = "Insufficient funds.";
+                    }
+                    break;
+
                 case "s":
                     if (farm.visitMkt().sellAll())  {
                         result = "Thank you for your business.";
@@ -105,6 +125,8 @@ public class TextMode implements GUIMode    {
             scan.reset();
             String input = scan.nextLine().toLowerCase();
             String result;
+            Seed seed;
+            int val;
 
             switch(input)   {
                 case "q":
@@ -112,28 +134,53 @@ public class TextMode implements GUIMode    {
                     result = "Goodbye!";
                     break;
 
-                case "a":
-                    if(farm.addPlot())  {
-                        result = "Plot added.";
-                    } else {
-                        result = "You need more money!";
-                    }
-                    break;
+                // case "a":
+                //     if(farm.addPlot())  {
+                //         result = "Plot added.";
+                //     } else {
+                //         result = "You need more money!";
+                //     }
+                //     break;
 
-                case "r":
-                    if(farm.removePlot())   {
-                        result = "Plot removed.";
-                    } else {
-                        result = "You don't have any plots!";
-                    }
-                    break;
+                // case "r":
+                //     if(farm.removePlot())   {
+                //         result = "Plot removed.";
+                //     } else {
+                //         result = "You don't have any plots!";
+                //     }
+                //     break;
 
                 case "p":
-                    int val = farm.plant(new PotatoSeed(farm.getDayCount()));
+                    seed = new PotatoSeed(farm.getDayCount());
+                    val = farm.plant(seed);
                     if(val == 0)    {
                         result = "Potato planted.";
                     } else if(val == 1) {
                         result = "You need more potato seeds!";
+                    } else {
+                        result = "You need more land!";
+                    }
+                    break;
+
+                case "c":
+                    seed = new CarrotSeed(farm.getDayCount());
+                    val = farm.plant(seed);
+                    if(val == 0)    {
+                        result = "Carrot planted.";
+                    } else if(val == 1) {
+                        result = "You need more carrot seeds!";
+                    } else {
+                        result = "You need more land!";
+                    }
+                    break;
+
+                case "b":
+                    seed = new BeetSeed(farm.getDayCount());
+                    val = farm.plant(seed);
+                    if(val == 0)    {
+                        result = "Beet planted.";
+                    } else if(val == 1) {
+                        result = "You need more beet seeds!";
                     } else {
                         result = "You need more land!";
                     }

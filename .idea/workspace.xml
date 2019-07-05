@@ -1,24 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0437e943-bd18-4e3d-9210-7ceb4a8e67ca" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Buyable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Buyable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ConsolePainter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ConsolePainter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Crop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Crop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Day.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Day.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Farm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Farm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUIMode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUIMode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Inventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Inventory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Market.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Market.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Money.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bank.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Plant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Plant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Plot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Plot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Potato.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Potato.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PotatoSeed.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PotatoSeed.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Seed.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Seed.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TextMode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TextMode.java" afterDir="false" />
-    </list>
+    <list default="true" id="0437e943-bd18-4e3d-9210-7ceb4a8e67ca" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -154,6 +137,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="415" />
   </component>
   <component name="RunDashboard">
@@ -183,7 +167,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Image Layers" order="0" />
       <window_info id="Designer" order="1" />

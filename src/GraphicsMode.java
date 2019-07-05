@@ -15,15 +15,28 @@ public class GraphicsMode implements GUIMode    {
         window.setSize(WIDTH, HEIGHT);
         window.setResizable(false);
     }
+    @Override
     public void nextScreen(){}
+    
+    @Override
     public void gameLoop(){}
-
+    
+    @Override
     public void farmTutorial(){}
+    
+    @Override
     public void invTutorial(){}
+    
+    @Override
     public void mktTutorial(){}
-
+    
+    @Override
     public void showFarm(){}
+    
+    @Override
     public void showInventory(){}
+    
+    @Override
     public void showMarket(){}
 
     private void createUIComponents() {

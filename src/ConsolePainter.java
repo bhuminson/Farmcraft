@@ -1,19 +1,38 @@
 public class ConsolePainter implements Visitor  {
 
     private static final int PLOT_WIDTH = 9;
-    private static final int PLOT_HEIGHT = 5;
+    private static final int PLOT_HEIGHT = 1;
+    private final PotatoSeed potatoSeed = new PotatoSeed(new Day());
+    private final CarrotSeed carrotSeed = new CarrotSeed(new Day());
+    private final BeetSeed beetSeed = new BeetSeed(new Day());
+    private final Potato potato = new Potato();
+    private final Carrot carrot = new Carrot();
+    private final Beet beet = new Beet();
 
     @Override
     public void visit(Farm farm)    {
-        System.out.println("______________________________________________________");
+        System.out.println("____________________________________________________________________________________");
         System.out.println(farm.getName());
         System.out.println(farm.getFinances());
         System.out.println(farm.getDayCount());
         System.out.println();
-        for(Plot plot: farm.getPlots())  {
-            plot.accept(this);
+        for(Plot[] triplet: farm.getPlots())    {
+            for(Plot plot: triplet) {
+                plot.accept(this);
+                System.out.print("<Plot " + plot.getNumber() + "|Grade " + plot.getGrade() + ">    ");
+            }
+            System.out.println("\n\n\n");
         }
-        System.out.println("______________________________________________________");
+        // for(Plot plot: farm.getPlots())  {
+        //     plot.accept(this);
+        // }
+        // for(int i = 0; i < farm.getPlots().size; i++) {
+        //     farm.getPlots().get(i).accept(this);
+        //     if(i % 3 == 0)  {
+        //         System.out.println();
+        //     }
+        // }
+        System.out.println("____________________________________________________________________________________");
     }
 
     @Override
@@ -23,7 +42,7 @@ public class ConsolePainter implements Visitor  {
                 for(int j = 0; j < PLOT_WIDTH; j++) {
                     System.out.print("-");
                 }
-                System.out.println();
+                // System.out.println();
             }
         } else {
             for(int i = 0; i < PLOT_HEIGHT; i++)    {
@@ -35,10 +54,10 @@ public class ConsolePainter implements Visitor  {
                         ((Crop)plant).accept(this);
                     }
                 }
-                System.out.println();
+                // System.out.println();
             }
         }
-        System.out.println();
+        // System.out.println();
     }
 
     @Override
@@ -47,36 +66,70 @@ public class ConsolePainter implements Visitor  {
     }
 
     @Override
+    public void visit(Carrot carrot)    {
+        System.out.print("C");
+    }
+
+    @Override
+    public void visit(Beet beet)    {
+        System.out.print("B");
+    }
+
+    @Override
     public void visit(PotatoSeed seed)    {
         System.out.print("p");
     }
 
     @Override
+    public void visit(CarrotSeed seed)    {
+        System.out.print("c");
+    }
+
+    @Override
+    public void visit(BeetSeed seed)    {
+        System.out.print("b");
+    }
+
+    @Override
     public void visit(Inventory inv)        {
-        PotatoSeed potatoSeed = new PotatoSeed(new Day());
-        Potato potato = new Potato();
         System.out.println("**************** INVENTORY ****************");
         System.out.println("\n             *** SEEDS ***\n");
         System.out.println("           Potato seeds: " + inv.getSeeds().get(potatoSeed));
+        System.out.println("           Carrot seeds: " + inv.getSeeds().get(carrotSeed));
+        System.out.println("           Beet seeds: " + inv.getSeeds().get(beetSeed));
         System.out.println("\n             *** CROPS ***\n");
         System.out.println("           Potatoes: " + inv.getCrops().get(potato));
+        System.out.println("           Carrots: " + inv.getCrops().get(carrot));
+        System.out.println("           Beets: " + inv.getCrops().get(beet));
         System.out.println("\n*******************************************");
     }
 
     @Override
     public void visit(Market mkt)  {
-        PotatoSeed potatoSeed = new PotatoSeed(new Day());
-        Potato potato = new Potato();
         System.out.println("+++++++++++++++ MARKET +++++++++++++++");
         System.out.println("\nCash: " + mkt.getUserCash());
+
         System.out.println("\n             +++ BUY +++\n");
         System.out.println("           Potato seeds: ");
         System.out.println("              Price: $" + potatoSeed.getBuyPrice());
         System.out.println("              Your stock: " + mkt.getUserInv().getSeeds().get(potatoSeed));
+        System.out.println("           Carrot seeds: ");
+        System.out.println("              Price: $" + carrotSeed.getBuyPrice());
+        System.out.println("              Your stock: " + mkt.getUserInv().getSeeds().get(carrotSeed));
+        System.out.println("           Beet seeds: ");
+        System.out.println("              Price: $" + beetSeed.getBuyPrice());
+        System.out.println("              Your stock: " + mkt.getUserInv().getSeeds().get(beetSeed));
+
         System.out.println("\n             +++ SELL +++\n");
         System.out.println("           Potato: ");
         System.out.println("              Price: $" + potato.getSellPrice());
         System.out.println("              Your stock: " + mkt.getUserInv().getCrops().get(potato));
+        System.out.println("           Carrot: ");
+        System.out.println("              Price: $" + carrot.getSellPrice());
+        System.out.println("              Your stock: " + mkt.getUserInv().getCrops().get(carrot));
+        System.out.println("           Beet: ");
+        System.out.println("              Price: $" + beet.getSellPrice());
+        System.out.println("              Your stock: " + mkt.getUserInv().getCrops().get(beet));
         System.out.println("\n++++++++++++++++++++++++++++++++++++++");
     }
 } 

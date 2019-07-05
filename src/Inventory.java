@@ -9,7 +9,11 @@ public class Inventory implements Paintable     {
         seeds = new HashMap<>();
         crops = new HashMap<>();
         seeds.put(new PotatoSeed(new Day()), 0);
+        seeds.put(new CarrotSeed(new Day()), 0);
+        seeds.put(new BeetSeed(new Day()), 0);
         crops.put(new Potato(), 0);
+        crops.put(new Carrot(), 0);
+        crops.put(new Beet(), 0);
     }
 
     Map getSeeds()   {

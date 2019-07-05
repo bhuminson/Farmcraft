@@ -1,24 +1,44 @@
-public class Plot implements Paintable, Buyable, Sellable {
+public class Plot implements Paintable {
 
-	private int buyPrice;
-	private int sellPrice;
+	private static final String[] grades = {"F", "D", "C", "B", "A", "S", "SS"
+											, "SSS", "4S", "5S", "X"};
+	// private int buyPrice;
+	// private int sellPrice;
 	private boolean planted;
 	private Plant plant; 
+	private int number;
+	private int gradeIndex;
 
-	Plot()	{
+	Plot(int number)	{
 		planted = false;
-		buyPrice = 100;
-		sellPrice = 70;
+		// buyPrice = 100;
+		// sellPrice = 70;
+		gradeIndex = 0;
+		this.number = number;
 	}
 
-	@Override
-	public int getBuyPrice()	{
-		return buyPrice;
+	// @Override
+	// public int getBuyPrice()	{
+	// 	return buyPrice;
+	// }
+
+	// @Override
+	// public int getSellPrice()	{
+	// 	return sellPrice;
+	// }
+
+	void upgrade()	{
+		if(gradeIndex < grades.length - 1)	{ 
+			gradeIndex++;
+		}
 	}
 
-	@Override
-	public int getSellPrice()	{
-		return sellPrice;
+	int getNumber()	{
+		return number;
+	}
+
+	String getGrade()	{
+		return grades[gradeIndex];
 	}
 
 	boolean isEmpty()	{
