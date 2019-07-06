@@ -37,6 +37,10 @@ public class Plot implements Paintable {
 		return number;
 	}
 
+	int getGradeIndex()	{
+		return gradeIndex;
+	}
+
 	String getGrade()	{
 		return grades[gradeIndex];
 	}

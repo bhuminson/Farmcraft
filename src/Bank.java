@@ -10,7 +10,7 @@ public class Bank  {
         return cash;
     }
 
-    boolean withdraw(int amt)    {
+    boolean withdraw(double amt)    {
         if(cash < amt)  {
             return false;
         }
@@ -18,12 +18,16 @@ public class Bank  {
         return true;
     }
 
-    void deposit(int amt) {
+    void deposit(double amt) {
         cash += amt;
     }
 
     boolean canAfford(Buyable item)  {
         return cash >= item.getBuyPrice();
+    }
+
+    boolean canAfford(double price)  {
+        return cash >= price;
     }
 
     public String toString()    {

@@ -24,6 +24,7 @@ public class TextMode implements GUIMode    {
         System.out.println("\tPress 'm' to go to the market");
         System.out.println("\tPress 's' to sleep");
         System.out.println("\tPress 'h' to harvest any ripe crops");
+        System.out.println("\tPress 'u' to upgrade a plot");
         System.out.println("\tPress 'q' to quit");
         System.out.println("\n");
     }
@@ -158,7 +159,7 @@ public class TextMode implements GUIMode    {
                     } else if(val == 1) {
                         result = "You need more potato seeds!";
                     } else {
-                        result = "You need more land!";
+                        result = "All your plots are full!";
                     }
                     break;
 
@@ -170,7 +171,7 @@ public class TextMode implements GUIMode    {
                     } else if(val == 1) {
                         result = "You need more carrot seeds!";
                     } else {
-                        result = "You need more land!";
+                        result = "All your plots are full!";
                     }
                     break;
 
@@ -182,7 +183,7 @@ public class TextMode implements GUIMode    {
                     } else if(val == 1) {
                         result = "You need more beet seeds!";
                     } else {
-                        result = "You need more land!";
+                        result = "All your plots are full!";
                     }
                     break;
 
@@ -208,6 +209,14 @@ public class TextMode implements GUIMode    {
                         result = "Harvest success!";
                     } else {
                         result = "You have nothing to harvest...";
+                    }
+                    break;
+
+                case "u":
+                    if(farm.upgradePlot())  {
+                        result = "Plot upgraded.";
+                    }   else   {
+                        result = "You need more money! Upgrade costs $" + farm.nextUpgradeCost(); 
                     }
                     break;
 

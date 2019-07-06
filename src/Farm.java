@@ -1,6 +1,3 @@
-// import java.util.List;
-// import java.util.ArrayList;
-
 public class Farm implements Paintable	{
 	private String name;
 	private Plot[][] plots;
@@ -8,10 +5,13 @@ public class Farm implements Paintable	{
 	private Day dayCount;
     private Inventory inv;
     private Market mkt;
+    private int upgradeCount;
+    private int upgradeLvl;
 
 	public Farm(String name)	{
 		this.name = name;
-		// plots = new ArrayList<>();
+        upgradeCount = 0;
+        upgradeLvl = 1;
         plots = new Plot[3][3];
         for(int i = 0; i < 3; i++)  {
             for(int j = 0; j < 3; j++)  {
@@ -19,7 +19,7 @@ public class Farm implements Paintable	{
             }
         }
 		dayCount = new Day();
-		finances = new Bank(350);
+		finances = new Bank(9999);
 		inv = new Inventory();
 		mkt = new Market(finances, inv);
 	}
@@ -48,8 +48,30 @@ public class Farm implements Paintable	{
         return mkt;
     }
 
-    void upgradePlot()  {
-        
+    boolean upgradePlot()  {
+        double price = nextUpgradeCost();
+        if(!finances.canAfford(price))  {
+            return false;
+        }
+
+        for(int i = 0; i < 3; i++)  {
+            for(int j = 0; j < 3; j++)  {
+                if(plots[i][j].getGradeIndex() < upgradeLvl)    {
+                    plots[i][j].upgrade();
+                    finances.withdraw(price);
+                    if(i == 2 && j == 2) {
+                        upgradeLvl++;
+                    }
+                    upgradeCount++;
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    double nextUpgradeCost()   {
+        return 120 + 0.5 * (upgradeCount * upgradeCount);
     }
 
     void advance()	{
@@ -87,34 +109,11 @@ public class Farm implements Paintable	{
         return harvested;
 	}
 
-	// boolean addPlot()	{
-	// 	Plot newPlot = new Plot();
-	// 	if(!finances.canAfford(newPlot))	{
-	// 		return false;
-	// 	}
-
-	// 	plots.add(newPlot);
-	// 	finances.withdraw(newPlot.getBuyPrice());
-	// 	return true;
-	// }
-
-	// boolean removePlot()	{
-	// 	if(plots.size() == 0)	{
-	// 		return false;
-	// 	}
-
-	// 	plots.remove(plots.size() - 1);
- //        Plot temp = new Plot();
- //        finances.deposit(temp.getSellPrice());
-	// 	return true;
-	// }
-
 	int plant(Seed seed)	{
 		if(!inv.checkStock(seed))	{
 			return 1; // no seeds
 		}
 
-		// for(Plot plot: plots)  {
         for(int i = 0; i < 3; i++)  {
             for(int j = 0; j < 3; j++)  {
                 Plot curPlot = plots[i][j];
