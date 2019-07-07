@@ -5,7 +5,7 @@ public class GraphicsMode implements GUIMode    {
     private JFrame window;
     private static final int WIDTH = 1280;
     private static final int HEIGHT = 800;
-    private JPanel farmPane;
+    private Farm farm;
 
     @Override
     public void setup() {
@@ -14,6 +14,8 @@ public class GraphicsMode implements GUIMode    {
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setSize(WIDTH, HEIGHT);
         window.setResizable(false);
+        createUIComponents();
+        window.setContentPane(new Start());
     }
     @Override
     public void nextScreen(){}
