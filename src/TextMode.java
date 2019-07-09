@@ -7,16 +7,12 @@ public class TextMode implements GUIMode    {
     private boolean quit = false;
     private Farm farm;
 
-    @Override
     public void invTutorial()       {
         System.out.println("\nPress 'i' to go back to the farm\n");
     }
 
-    @Override
     public void farmTutorial()  {
         System.out.println("Controls:");
-        // System.out.println("\tPress 'a' to add a plot ($100)");
-        // System.out.println("\tPress 'r' to remove a plot");
         System.out.println("\tPress 'p' to plant a potato");
         System.out.println("\tPress 'c' to plant a carrot");
         System.out.println("\tPress 'b' to plant a beet");
@@ -29,7 +25,6 @@ public class TextMode implements GUIMode    {
         System.out.println("\n");
     }
 
-    @Override
     public void mktTutorial()   {
         System.out.println("\nWelcome to Farm Depot!\n");
         System.out.println("Press 'p' to buy potato seeds");
@@ -39,14 +34,12 @@ public class TextMode implements GUIMode    {
         System.out.println("Press 'm' to go back to the farm\n");
     }
 
-    @Override
     public void showFarm()  {
         nextScreen();
         farmTutorial();
         farm.accept(consolePainter);
     }
 
-    @Override
     public void showInventory()     {
         nextScreen();
         invTutorial();
@@ -62,7 +55,6 @@ public class TextMode implements GUIMode    {
         }
     }
 
-    @Override
     public void showMarket()   {
         nextScreen();
         mktTutorial();
@@ -134,22 +126,6 @@ public class TextMode implements GUIMode    {
                     quit = true;
                     result = "Goodbye!";
                     break;
-
-                // case "a":
-                //     if(farm.addPlot())  {
-                //         result = "Plot added.";
-                //     } else {
-                //         result = "You need more money!";
-                //     }
-                //     break;
-
-                // case "r":
-                //     if(farm.removePlot())   {
-                //         result = "Plot removed.";
-                //     } else {
-                //         result = "You don't have any plots!";
-                //     }
-                //     break;
 
                 case "p":
                     seed = new PotatoSeed(farm.getDayCount());
