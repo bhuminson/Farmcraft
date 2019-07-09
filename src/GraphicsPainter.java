@@ -5,25 +5,45 @@ import java.awt.event.ActionEvent;
 public class GraphicsPainter implements Visitor    {
 
     private JFrame window;
+    private JPanel farmPane;
+    private JPanel marketPane;
 
     GraphicsPainter(JFrame window)   {
         this.window = window;
+        farmPane = new JPanel();
+        marketPane = new JPanel();
     }
 
     @Override
-    public void visit(Farm farm){
-        JPanel farmPane = new JPanel();
+    public void visit(Farm farm) {
+        window.getContentPane().setBackground(Color.GREEN);
+
         JLabel farmName = new JLabel(farm.getName());
         JLabel dayCount = new JLabel(""+farm.getDayCount());
         JLabel money = new JLabel(""+farm.getFinances());
         JLabel result = new JLabel();
-        JButton sleep = new JButton("Sleep");
-        JButton harvester = new JButton("Harvest");
 
+        JButton sleep = new JButton("Sleep");
         sleep.addActionListener((ActionEvent e) ->  {
             farm.advance();
             dayCount.setText("" + farm.getDayCount());
         });
+
+        JButton market = new JButton("Market");
+        market.addActionListener((ActionEvent e) -> {
+            visit(farm.visitMkt());
+        });
+
+        JButton inv = new JButton("Inventory");
+        inv.addActionListener((ActionEvent e) -> {
+            visit(farm.accessInv());
+        });
+
+        JButton harvester = new JButton("Harvest");
+        harvester.addActionListener((ActionEvent e) -> {
+            farm.harvestAll();
+        });
+
 
         farmPane.add(sleep);
         farmPane.add(farmName);
@@ -31,6 +51,8 @@ public class GraphicsPainter implements Visitor    {
         farmPane.add(money);
         farmPane.add(harvester);
         farmPane.add(result);
+        farmPane.add(market);
+        farmPane.add(market);
 
         window.add(farmPane);
         refresh();
@@ -78,7 +100,10 @@ public class GraphicsPainter implements Visitor    {
 
     @Override
     public void visit(Market mkt){
+        window.getContentPane().setBackground(Color.ORANGE);
 
+        JLabel buy = new JLabel("Buy");
+        JLabel PotatoSeeds = new JLabel("Potato seeds: " + );
     }
 
     private void refresh()   {

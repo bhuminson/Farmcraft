@@ -111,7 +111,6 @@ public class TextMode implements GUIMode    {
         }
     }
 
-    @Override
     public void gameLoop()  {
 
         while(!quit)    {
@@ -225,5 +224,6 @@ public class TextMode implements GUIMode    {
         String name = scan.nextLine();
         farm = new Farm(name);
         showFarm();
+        gameLoop();
     }
 }

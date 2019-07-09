@@ -47,8 +47,4 @@ public class GraphicsMode implements GUIMode    {
     public void nextScreen(){
         window.repaint();
     }
-    
-    @Override
-    public void gameLoop(){}
-    
 }

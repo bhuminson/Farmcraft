@@ -29,15 +29,6 @@ public class ConsolePainter implements Visitor  {
                 System.out.println("\n");
             }
         }
-        // for(Plot plot: farm.getPlots())  {
-        //     plot.accept(this);
-        // }
-        // for(int i = 0; i < farm.getPlots().size; i++) {
-        //     farm.getPlots().get(i).accept(this);
-        //     if(i % 3 == 0)  {
-        //         System.out.println();
-        //     }
-        // }
         System.out.println("____________________________________________________________________________________");
     }
 
