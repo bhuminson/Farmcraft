@@ -12,7 +12,7 @@ public class GraphicsMode implements GUIMode    {
 
     @Override
     public void setup() {
-        window.setLayout(new GridBagLayout());
+        // window.setLayout(new GridBagLayout());
 
         JPanel startPane = new JPanel();
         JTextField input = new JTextField(20);
@@ -40,6 +40,8 @@ public class GraphicsMode implements GUIMode    {
             farm = new Farm(name);
             nextScreen();
             farm.accept(graphicsPainter);
+            farm.visitMkt().accept(graphicsPainter);
+            farm.accessInv().accept(graphicsPainter);
         });
     }
 
