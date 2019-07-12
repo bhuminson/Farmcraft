@@ -35,13 +35,13 @@ public class TextMode implements GUIMode    {
     }
 
     public void showFarm()  {
-        nextScreen();
+        refresh();
         farmTutorial();
         farm.accept(consolePainter);
     }
 
     public void showInventory()     {
-        nextScreen();
+        refresh();
         invTutorial();
         farm.accessInv().accept(consolePainter);
     }
@@ -56,7 +56,7 @@ public class TextMode implements GUIMode    {
     }
 
     public void showMarket()   {
-        nextScreen();
+        refresh();
         mktTutorial();
         farm.visitMkt().accept(consolePainter);
     }
@@ -206,7 +206,7 @@ public class TextMode implements GUIMode    {
     }
 
     @Override
-    public void nextScreen() {  
+    public void refresh() {  
         try     { 
             new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
         }
@@ -217,7 +217,7 @@ public class TextMode implements GUIMode    {
  
     @Override
     public void setup() {
-        nextScreen();
+        refresh();
         System.out.println("Farmer Inc., Copyright 2019, Bhumin Son. All rights reserved.\n");
         System.out.println("Welcome to Farmer Inc.!\n");
         System.out.print("Name your farm: ");
