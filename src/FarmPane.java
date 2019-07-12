@@ -16,6 +16,7 @@ public class FarmPane extends JPanel   {
         sleep.addActionListener((ActionEvent e) ->  {
             farm.advance();
             dayCount.setText("" + farm.getDayCount());
+            result.setText("You slept well");
         });
 
         JButton market = new JButton("Market");
@@ -32,7 +33,11 @@ public class FarmPane extends JPanel   {
 
         JButton harvester = new JButton("Harvest");
         harvester.addActionListener((ActionEvent e) -> {
-            farm.harvestAll();
+            if(farm.harvestAll())   {
+                result.setText("You have nothing to harvest...");
+            } else {
+                result.setText("Harvest Success!");
+            }
         });
 
 
