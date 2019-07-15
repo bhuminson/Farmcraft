@@ -1,16 +1,24 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import javax.imageio.ImageIO;
+import java.io.File;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 
 public class FarmPane extends JPanel   {
 
     public FarmPane(GraphicsMode mainFrame, Farm farm)  {
-        setBackground(Color.GREEN);
+        setLayout(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+
+        setBackground(new Color(0, 180, 0));
 
         JLabel farmName = new JLabel(farm.getName());
         JLabel dayCount = new JLabel("" + farm.getDayCount());
         JLabel money = new JLabel("" + farm.getFinances());
-        JLabel result = new JLabel();
+        JLabel result = new JLabel("", SwingConstants.CENTER);
+        result.setPreferredSize(new Dimension(170,25));
 
         JButton sleep = new JButton("Sleep");
         sleep.addActionListener((ActionEvent e) ->  {
@@ -34,20 +42,96 @@ public class FarmPane extends JPanel   {
         JButton harvester = new JButton("Harvest");
         harvester.addActionListener((ActionEvent e) -> {
             if(farm.harvestAll())   {
-                result.setText("You have nothing to harvest...");
-            } else {
                 result.setText("Harvest Success!");
+            } else {
+                result.setText("You have nothing to harvest...");
             }
         });
 
+        JButton quit = new JButton("Quit");
+        quit.addActionListener((ActionEvent e) -> {
+            mainFrame.dispose();
+        });
 
-        add(sleep);
-        add(farmName);
-        add(dayCount);
-        add(money);
-        add(harvester);
-        add(result);
-        add(market);
-        add(inv);
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.weightx = 1;
+        gbc.weighty = 1;
+        gbc.fill = GridBagConstraints.NONE;
+
+        gbc.anchor = GridBagConstraints.NORTHWEST;
+        add(dayCount, gbc);
+
+        gbc.gridx = 2;
+        gbc.gridy = 0;
+        gbc.anchor = GridBagConstraints.NORTH;
+        add(farmName, gbc);
+
+        gbc.gridx = 4;
+        gbc.gridy = 0;
+        gbc.anchor = GridBagConstraints.NORTHEAST;
+        add(money, gbc);
+
+        gbc.gridx = 4;
+        gbc.gridy = 5;
+        gbc.anchor = GridBagConstraints.SOUTHEAST;
+        add(harvester, gbc);
+
+        gbc.gridx = 2;
+        gbc.gridy = 4;
+        gbc.anchor = GridBagConstraints.CENTER;
+        add(result, gbc);
+
+        gbc.gridx = 2;
+        gbc.gridy = 5;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.anchor = GridBagConstraints.SOUTH;
+        add(sleep, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        gbc.anchor = GridBagConstraints.LINE_START;
+        gbc.fill = GridBagConstraints.VERTICAL;
+        add(market, gbc);
+
+        gbc.gridx = 4;
+        gbc.gridy = 2;
+        gbc.anchor = GridBagConstraints.LINE_END;
+        add(inv, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 5;
+        gbc.fill = GridBagConstraints.NONE;
+        gbc.anchor = GridBagConstraints.SOUTHWEST;
+        add(quit, gbc);
+
+        BufferedImage plotSprite = null;
+        try {
+            plotSprite = ImageIO.read(new File("src/sprites/plot.png"));
+        } catch(IOException e) {
+
+        }
+
+        gbc.anchor = GridBagConstraints.CENTER;
+        for(int i = 0; i < 3; i++)  {
+            for(int j = 0; j < 3; j++)  {
+                JLabel newPlot = new JLabel(new ImageIcon(plotSprite));
+                gbc.gridx = i + 1;
+                gbc.gridy = j + 1;
+                add(newPlot, gbc);
+            }
+        }
+
+        // JLabel plot1 = 
+        // gbc.gridx = 1;
+        // gbc.gridy = 1;
+        // // gbc.anchor = GridBagConstraints.SOUTHEAST;
+        // add(plot1, gbc);
+
+        // JLabel plot2 = new JLabel(new ImageIcon(plotSprite));
+        // gbc.gridx = 1;
+        // gbc.gridy = 2;
+        // // gbc.anchor = GridBagConstraints.LINE_END;
+        // add(plot2, gbc);
     }
 }

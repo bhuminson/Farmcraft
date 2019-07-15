@@ -78,7 +78,6 @@ public class Farm implements Paintable	{
 		dayCount.nextDay();
         for(int i = 0; i < 3; i++)  {
             for(int j = 0; j < 3; j++)  {
-		// for(Plot plot: plots)  {
                 Plot curPlot = plots[i][j];
                 Plant plant = curPlot.getPlant();
                 if(plant instanceof Seed)	{
@@ -94,7 +93,6 @@ public class Farm implements Paintable	{
 	boolean harvestAll()	{
         boolean harvested = false;
 
-		// for(Plot plot: plots)  {
         for(int i = 0; i < 3; i++)  {
             for(int j = 0; j < 3; j++)  {
                 Plot curPlot = plots[i][j];

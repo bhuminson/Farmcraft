@@ -34,12 +34,14 @@ public class TextMode implements GUIMode    {
         System.out.println("Press 'm' to go back to the farm\n");
     }
 
+    @Override
     public void showFarm()  {
         refresh();
         farmTutorial();
         farm.accept(consolePainter);
     }
 
+    @Override
     public void showInventory()     {
         refresh();
         invTutorial();
@@ -55,6 +57,7 @@ public class TextMode implements GUIMode    {
         }
     }
 
+    @Override
     public void showMarket()   {
         refresh();
         mktTutorial();

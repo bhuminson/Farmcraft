@@ -4,10 +4,9 @@ import java.awt.event.ActionEvent;
 
 public class GraphicsMode extends JFrame implements GUIMode    {
 
-    // private final JFrame window = new JFrame("Farmer Inc.");
     private final Visitor graphicsPainter = new GraphicsPainter(this);
-    private static final int WIDTH = 1280;
-    private static final int HEIGHT = 800;
+    static final int WIDTH = 1280;
+    static final int HEIGHT = 800;
     private Farm farm;
 
     public GraphicsMode()   {
@@ -34,16 +33,20 @@ public class GraphicsMode extends JFrame implements GUIMode    {
         validate();
         repaint();
         setVisible(true);
+        // pack();
     }
 
+    @Override
     public void showFarm()  {
         farm.accept(graphicsPainter);
     }
 
+    @Override
     public void showMarket()    {
         farm.visitMkt().accept(graphicsPainter);
     }
 
+    @Override
     public void showInventory() {
         farm.accessInv().accept(graphicsPainter);
     }
