@@ -2,8 +2,6 @@ public class Plot implements Paintable {
 
 	private static final String[] grades = {"F", "D", "C", "B", "A", "S", "SS"
 											, "SSS", "4S", "5S", "X"};
-	// private int buyPrice;
-	// private int sellPrice;
 	private boolean planted;
 	private Plant plant; 
 	private int number;
@@ -11,21 +9,9 @@ public class Plot implements Paintable {
 
 	Plot(int number)	{
 		planted = false;
-		// buyPrice = 100;
-		// sellPrice = 70;
 		gradeIndex = 0;
 		this.number = number;
 	}
-
-	// @Override
-	// public int getBuyPrice()	{
-	// 	return buyPrice;
-	// }
-
-	// @Override
-	// public int getSellPrice()	{
-	// 	return sellPrice;
-	// }
 
 	void upgrade()	{
 		if(gradeIndex < grades.length - 1)	{ 

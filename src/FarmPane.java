@@ -18,7 +18,7 @@ public class FarmPane extends JPanel   {
         JLabel dayCount = new JLabel("" + farm.getDayCount());
         JLabel money = new JLabel("" + farm.getFinances());
         JLabel result = new JLabel("", SwingConstants.CENTER);
-        result.setPreferredSize(new Dimension(170,25));
+        // result.setPreferredSize(new Dimension(170,25));
 
         JButton sleep = new JButton("Sleep");
         sleep.addActionListener((ActionEvent e) ->  {
@@ -121,17 +121,5 @@ public class FarmPane extends JPanel   {
                 add(newPlot, gbc);
             }
         }
-
-        // JLabel plot1 = 
-        // gbc.gridx = 1;
-        // gbc.gridy = 1;
-        // // gbc.anchor = GridBagConstraints.SOUTHEAST;
-        // add(plot1, gbc);
-
-        // JLabel plot2 = new JLabel(new ImageIcon(plotSprite));
-        // gbc.gridx = 1;
-        // gbc.gridy = 2;
-        // // gbc.anchor = GridBagConstraints.LINE_END;
-        // add(plot2, gbc);
     }
 }
