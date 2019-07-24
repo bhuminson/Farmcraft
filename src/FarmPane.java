@@ -1,10 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import javax.imageio.ImageIO;
-import java.io.File;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
 
 public class FarmPane extends JPanel   {
 
@@ -105,21 +102,31 @@ public class FarmPane extends JPanel   {
         gbc.anchor = GridBagConstraints.SOUTHWEST;
         add(quit, gbc);
 
-        BufferedImage plotSprite = null;
-        try {
-            plotSprite = ImageIO.read(new File("src/sprites/plot.png"));
-        } catch(IOException e) {
-
-        }
-
         gbc.anchor = GridBagConstraints.CENTER;
         for(int i = 0; i < 3; i++)  {
             for(int j = 0; j < 3; j++)  {
-                JLabel newPlot = new JLabel(new ImageIcon(plotSprite));
+                JButton plot = null;
+
+                if(farm.getPlot(i, j).isEmpty()) {
+                    plot = new JButton(new ImageIcon(GraphicsPainter.plot));
+                } else {
+                    Plant plant = farm.getPlot(i,j).getPlant();
+                }
+
+                
+                plot.setOpaque(false);
+                plot.setContentAreaFilled(false);
+                plot.setBorderPainted(false);
+                plot.addActionListener((ActionEvent e) -> {
+                    // new PlantMenu(farm.plots[i][j]);
+                });
+
                 gbc.gridx = i + 1;
                 gbc.gridy = j + 1;
-                add(newPlot, gbc);
+                add(plot, gbc);
             }
         }
     }
+
+    
 }

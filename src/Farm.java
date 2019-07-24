@@ -32,6 +32,10 @@ public class Farm implements Paintable	{
         return plots;
     }
 
+    Plot getPlot(int i , int j)  {
+        return plots[i][j];
+    }
+
 	Bank getFinances()  {
         return finances;
     }
