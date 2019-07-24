@@ -18,7 +18,7 @@ public class FarmPane extends JPanel   {
         JLabel dayCount = new JLabel("" + farm.getDayCount());
         JLabel money = new JLabel("" + farm.getFinances());
         JLabel result = new JLabel("", SwingConstants.CENTER);
-        // result.setPreferredSize(new Dimension(170,25));
+        result.setPreferredSize(new Dimension(170,25));
 
         JButton sleep = new JButton("Sleep");
         sleep.addActionListener((ActionEvent e) ->  {

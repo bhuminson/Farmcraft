@@ -5,14 +5,14 @@ import java.awt.event.ActionEvent;
 public class GraphicsMode extends JFrame implements GUIMode    {
 
     private final Visitor graphicsPainter = new GraphicsPainter(this);
-    // static final int WIDTH = 1280;
-    // static final int HEIGHT = 800;
+    static final int WIDTH = 1280;
+    static final int HEIGHT = 800;
     private Farm farm;
 
     public GraphicsMode()   {
         super("Farmer Inc.");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        // setSize(WIDTH, HEIGHT);
+        setSize(WIDTH, HEIGHT);
         setResizable(false);
         setLocationRelativeTo(null);
     }
@@ -33,7 +33,7 @@ public class GraphicsMode extends JFrame implements GUIMode    {
         validate();
         repaint();
         setVisible(true);
-        pack();
+        // pack();
     }
 
     @Override

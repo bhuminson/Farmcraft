@@ -18,10 +18,10 @@ public class GraphicsPainter implements Visitor    {
         mainFrame.setContentPane(new FarmPane(mainFrame, farm));
     }
 
-    // @Override
-    // public void visit(Plot plot){
+    @Override
+    public void visit(Plot plot){
 
-    // }
+    }
 
     @Override
     public void visit(Potato potato){

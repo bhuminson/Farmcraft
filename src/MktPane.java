@@ -13,7 +13,6 @@ public class MktPane extends JPanel   {
 
     public MktPane(GraphicsMode mainFrame, Market mkt)  {
         setLayout(new GridBagLayout());
-        setBackground(Color.GREEN);
         setBackground(Color.ORANGE);
         JLabel mktWelcome = new JLabel("Welcome to Farm Depot!");
         JLabel usrCash = new JLabel("" + mkt.getUserCash());
