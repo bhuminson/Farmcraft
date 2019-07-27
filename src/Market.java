@@ -40,7 +40,9 @@ public class Market implements Paintable    {
     boolean sellAll()    {
         boolean sold = false;
         Potato potato = new Potato();
-        while(sellCrop(potato)) {
+        Carrot carrot = new Carrot();
+        Beet beet = new Beet();
+        while(sellCrop(potato) || sellCrop(carrot) || sellCrop(beet)) {
             sold = true;
         }
         return sold;

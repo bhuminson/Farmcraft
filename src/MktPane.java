@@ -73,6 +73,8 @@ public class MktPane extends JPanel   {
             if(mkt.sellAll()) {
                 usrCash.setText("" + mkt.getUserCash());
                 result.setText("You sold all your crops");
+                mainFrame.showMarket();
+                mainFrame.refresh();
             } else {
                 result.setText("You don't have anything to sell...");
             }

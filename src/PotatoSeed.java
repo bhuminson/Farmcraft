@@ -4,7 +4,7 @@ public final class PotatoSeed extends Seed {
         super(dayCount);
         buyPrice = 5;
         growTime = 5;
-        id = "Potato";
+        id = "PotatoSeed";
     }
 
     public Crop transform() {

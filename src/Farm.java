@@ -111,7 +111,7 @@ public class Farm implements Paintable	{
         return harvested;
 	}
 
-	int plant(Seed seed)	{
+	int plantNext(Seed seed)	{
 		if(!inv.checkStock(seed))	{
 			return 1; // no seeds
 		}

@@ -131,7 +131,7 @@ public class TextMode implements GUIMode    {
 
                 case "p":
                     seed = new PotatoSeed(farm.getDayCount());
-                    val = farm.plant(seed);
+                    val = farm.plantNext(seed);
                     if(val == 0)    {
                         result = "Potato planted.";
                     } else if(val == 1) {
@@ -143,7 +143,7 @@ public class TextMode implements GUIMode    {
 
                 case "c":
                     seed = new CarrotSeed(farm.getDayCount());
-                    val = farm.plant(seed);
+                    val = farm.plantNext(seed);
                     if(val == 0)    {
                         result = "Carrot planted.";
                     } else if(val == 1) {
@@ -155,7 +155,7 @@ public class TextMode implements GUIMode    {
 
                 case "b":
                     seed = new BeetSeed(farm.getDayCount());
-                    val = farm.plant(seed);
+                    val = farm.plantNext(seed);
                     if(val == 0)    {
                         result = "Beet planted.";
                     } else if(val == 1) {

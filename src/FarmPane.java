@@ -22,6 +22,8 @@ public class FarmPane extends JPanel   {
             farm.advance();
             dayCount.setText("" + farm.getDayCount());
             result.setText("You slept well");
+            mainFrame.showFarm();
+            mainFrame.refresh();
         });
 
         JButton market = new JButton("Market");
@@ -43,11 +45,14 @@ public class FarmPane extends JPanel   {
             } else {
                 result.setText("You have nothing to harvest...");
             }
+            mainFrame.showFarm();
+            mainFrame.refresh();
         });
 
         JButton quit = new JButton("Quit");
         quit.addActionListener((ActionEvent e) -> {
             mainFrame.dispose();
+            System.exit(0);
         });
 
         gbc.gridx = 0;
@@ -105,25 +110,44 @@ public class FarmPane extends JPanel   {
         gbc.anchor = GridBagConstraints.CENTER;
         for(int i = 0; i < 3; i++)  {
             for(int j = 0; j < 3; j++)  {
-                JButton plot = null;
+                JButton plotButton = null;
+                Plot plot = farm.getPlot(i, j);
 
-                if(farm.getPlot(i, j).isEmpty()) {
-                    plot = new JButton(new ImageIcon(GraphicsPainter.plot));
+                if(plot.isEmpty()) {
+                    plotButton = new JButton(new ImageIcon(GraphicsPainter.plot));
                 } else {
-                    Plant plant = farm.getPlot(i,j).getPlant();
+                    Plant plant = plot.getPlant();
+                    if(plant.getID().equals("PotatoSeed"))  {
+                        plotButton = new JButton(new ImageIcon(GraphicsPainter.potatoSeedPlot));
+                    }
+                    if(plant.getID().equals("Potato"))  {
+                        plotButton = new JButton(new ImageIcon(GraphicsPainter.potatoPlot));
+                    }
+                    if(plant.getID().equals("CarrotSeed"))  {
+                        plotButton = new JButton(new ImageIcon(GraphicsPainter.carrotSeedPlot));
+                    }
+                    if(plant.getID().equals("Carrot"))  {
+                        plotButton = new JButton(new ImageIcon(GraphicsPainter.carrotPlot));
+                    }
+                    if(plant.getID().equals("BeetSeed"))  {
+                        plotButton = new JButton(new ImageIcon(GraphicsPainter.beetSeedPlot));
+                    }
+                    if(plant.getID().equals("Beet"))  {
+                        plotButton = new JButton(new ImageIcon(GraphicsPainter.beetPlot));
+                    }
                 }
 
-                
-                plot.setOpaque(false);
-                plot.setContentAreaFilled(false);
-                plot.setBorderPainted(false);
-                plot.addActionListener((ActionEvent e) -> {
-                    // new PlantMenu(farm.plots[i][j]);
+                plotButton.setOpaque(false);
+                plotButton.setContentAreaFilled(false);
+                plotButton.setBorderPainted(false);
+
+                plotButton.addActionListener((ActionEvent e) -> {
+                    PlantMenu menu = new PlantMenu(farm, mainFrame, plot);
                 });
 
                 gbc.gridx = i + 1;
                 gbc.gridy = j + 1;
-                add(plot, gbc);
+                add(plotButton, gbc);
             }
         }
     }
