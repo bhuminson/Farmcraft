@@ -19,7 +19,7 @@ public class Farm implements Paintable	{
             }
         }
 		dayCount = new Day();
-		finances = new Bank(9999);
+		finances = new Bank(350);
 		inv = new Inventory();
 		mkt = new Market(finances, inv);
 	}
