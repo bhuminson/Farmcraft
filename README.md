@@ -1,21 +1,11 @@
 # Farmer Inc.
-A farming business strategy-simulation game.
+A casual-simulation farming game.
 
 ## Concept
-1. The player begins with a small farm and 350 dollars.
+1. The player begins with a 9 plot farm and 350 dollars.
 2. The player uses his farm to plant, grow, and harvest crops to grow a profit. 
-3. The player constantly faces financial obligations, like taxes, equipment costs, etc.
 
 ## Main Components
 1. Farm
-2. Business report
 3. Market
 4. Inventory
-
-## Possible ideas for future
-1. Climate/weather
-2. Contracts by food companies
-3. Livestock
-4. Upgrades
-
-
